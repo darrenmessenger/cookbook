@@ -1,3 +1,4 @@
+echo web: python app.py > Procfile
 Click==7.0
 Flask==1.0.2
 Flask-PyMongo==2.2.0
