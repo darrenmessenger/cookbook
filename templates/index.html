@@ -2,6 +2,16 @@
 <div class="jumbotron text-center">
     <h1>Welcome to the CookBook</h1>
     <p class="lead">This is a CookBook that allows you to enter your own recipes or view the existing ones</p>
+    {% for recipes in recipe %}
+    <p>{{recipes.recipe_name}}</p>
+    {% endfor %}
+    <p>The end</p>
+</div>
+<div class="row">
+     {% for recipe in recipes %} 
+        {{recipe.recipe_name}} 
+        {{recipe.recipe_ingredients}} 
+    {% endfor %} 
 </div>
 
 {% endblock %}
