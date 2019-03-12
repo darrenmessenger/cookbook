@@ -1,19 +1,23 @@
 <header>
-    <nav class="blue">
+ <nav>
     <div class="nav-wrapper">
-      <a href="{{url_for('index')}}" class="brand-logo">CookBook Logo</a>
+      <a href="#!" class="brand-logo">Logo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="{{url_for('index')}}">Home</a></li>
         <li><a href="{{url_for('about')}}">About</a></li>
-        <li><a href="{{url_for('categories')}}">Categories</a></li>
+        <li><a class="waves-effect waves-light btn" href="{{url_for('add_recipe')}}">Add Recipe <i class="material-icons right">add</i></a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
       </ul>
     </div>
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a href="{{url_for('index')}}">Home</a></li>
-    <li><a href="{{url_for('about')}}">About</a></li>
-    <li><a href="{{url_for('categories')}}">Categories</a></li>
+    <li><a href="sass.html">Sass</a></li>
+    <li><a class="waves-effect waves-light btn">Button <i class="material-icons right">cloud</i></a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
   </ul>
 </header>

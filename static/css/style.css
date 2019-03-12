@@ -1,9 +1,42 @@
- body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+ @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-  main {
-    flex: 1 0 auto;
-  }
+ body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+
+ /*Background image */
+
+ .bg {
+   background: url("/static/images/med-food.jpg") no-repeat center center fixed;
+   height: 350px;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   width: 100%;
+ }
+
+ .overlay {
+   position: relative;
+   top: 0;
+   left: 0;
+   height: 350px;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.3);
+ }
+
+ .main {
+   color: white;
+   text-align: center;
+ }
+ 
