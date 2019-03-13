@@ -30,8 +30,22 @@ def categories():
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('add_recipe.html')
+    
+@app.route('/add_recipe', methods = ['GET','POST'])
+def insert_recipe():
+        if request.method == 'POST':
+            recipe ={'recipe_name': request.form.get('recipe_name'),
+                'recipe_description': request.form.get('recipe_description'),
+                'recipe_ingredients': request.form.get('recipe_ingredients'),
+                'recipe_method': request.form.get('recipe_method'),
+                'recipe_author': request.form.get('recipe_author'),
+                'recipe_image_url': request.form.get('recipe_image_url')
+            }
+           
+            mongo.db.recipes.insert_one(recipe)
 
-
+            return redirect(url_for('index'))
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

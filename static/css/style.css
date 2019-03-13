@@ -39,4 +39,16 @@
    color: white;
    text-align: center;
  }
+
+.card {
+    height: 250px; 
+    
+}
+
+.card-content {
+    height: 100px; 
+    overflow: auto;
+}
+
+
  
