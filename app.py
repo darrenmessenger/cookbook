@@ -53,6 +53,11 @@ def edit_recipe(recipe_id):
     return render_template('edit_recipe.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
     
+@app.route('/display_recipe/<recipe_id>')
+def display_recipe(recipe_id):
+    return render_template('display_recipe.html',
+    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes

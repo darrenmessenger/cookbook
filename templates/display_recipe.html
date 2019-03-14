@@ -1,0 +1,22 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card-panel teal">
+                <h1>{{recipe.recipe_name}}</h1>
+                <p>{{recipe.recipe_description}}</p>
+                <img src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
+                <p>Author: {{recipe.recipe_author}}</p>
+                <h3>Ingredients</h3>
+                <textarea class="materialize-textarea">{{recipe.recipe_ingredients}}</textarea>
+                <h3>Method</h3>
+                <textarea class="materialize-textarea">{{recipe.recipe_method}}</textarea>
+                <a class="btn-floating tooltipped right waves-effect waves-light red" data-position="top" data-tooltip="Edit Recipe" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"><i class="material-icons">edit</i></a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
