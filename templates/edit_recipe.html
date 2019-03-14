@@ -1,0 +1,60 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <h1>Edit Recipe</h1>
+      <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">title</i>
+          <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
+          <label for="recipe_name">Recipe Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">description</i>
+           <textarea name="recipe_description" id="recipe_description" class="materialize-textarea" readonly>{{recipe.recipe_description}}</textarea>
+          <label for="recipe_description">Recipe Description</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">list</i>
+          <textarea id="recipe_ingredients" name="recipe_ingredients" class="materialize-textarea">{{recipe.recipe_ingredients}}"</textarea>
+          <label for="recipe_ingredients">Ingredients</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">insert_comment</i>
+          <textarea id="recipe_method" name="recipe_method" class="materialize-textarea">{{recipe.recipe_method}}</textarea>
+          <label for="recipe_method">Method</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">person</i>
+          <input id="recipe_author" name="recipe_author" type="text" class="validate" value="{{recipe.recipe_author}}">
+          <label for="recipe_author">Recipe Author</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">image</i>
+          <input id="recipe_image_url" name="recipe_image_url" type="text" class="validate" value="{{recipe.recipe_image_url}}">
+          <label for="recipe_image_url">Enter the Recipe Image URL</label>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <button class="btn waves-effect waves-light right" type="submit" name="action">Update Recipe
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+  </div>
+  </form>
+</div>
+{% endblock %}
