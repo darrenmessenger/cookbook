@@ -9,35 +9,35 @@
         <div class="input-field col s12">
           <h5>Title</h5>
           <input id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
-          
+
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <h5>Description</h5>
           <textarea name="recipe_description" id="recipe_description" class="materialize-textarea">{{recipe.recipe_description}}</textarea>
-          
+
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <h5>Ingredients</h5>
           <textarea id="recipe_ingredients" name="recipe_ingredients" class="materialize-textarea">{{recipe.recipe_ingredients}}"</textarea>
-          
+
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <h5>Method</h5>
           <textarea id="recipe_method" name="recipe_method" class="materialize-textarea">{{recipe.recipe_method}}</textarea>
-          
+
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <h5>Author</h5>
           <input id="recipe_author" name="recipe_author" type="text" class="validate" value="{{recipe.recipe_author}}">
-         
+
         </div>
       </div>
 
@@ -45,20 +45,19 @@
         <div class="input-field col s12">
           <h5>Image URL</h5>
           <input id="recipe_image_url" name="recipe_image_url" type="text" class="validate" value="{{recipe.recipe_image_url}}">
-         
+
         </div>
       </div>
 
       <div class="col s12">
-        
+
         <button class="btn waves-effect waves-light right" type="submit" name="action">Update Recipe
             <i class="material-icons right">send</i>
-          </button>
-          
-           <button class="btn waves-effect waves-light right"  type="reset">Reset
+        </button>
+        <form action="{{url_for('delete_recipe', recipe_id=recipe._id)}}" method="POST"><button type="submit" class="waves-effect waves-light btn btn_small">Delete</button>
+        <button class="btn waves-effect waves-light right" type="reset">Reset
             <i class="material-icons right" >reset</i>
-           
-          </button>
+        </button>
       </div>
   </div>
   </form>

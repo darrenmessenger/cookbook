@@ -41,7 +41,7 @@
  }
 
 .card {
-    height: 250px; 
+    height: 300px; 
     
 }
 
@@ -50,5 +50,9 @@
     overflow: auto;
 }
 
+.display-btn {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 
  

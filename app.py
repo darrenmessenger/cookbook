@@ -48,7 +48,7 @@ def insert_recipe():
 
             return redirect(url_for('index'))
             
-@app.route('/edit_recipe/<recipe_id>')
+@app.route('/edit_recipe/<recipe_id>', methods = ['GET','POST'])
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
@@ -58,7 +58,7 @@ def display_recipe(recipe_id):
     return render_template('display_recipe.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
     
-@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+@app.route('/update_recipe/<recipe_id>', methods = ['GET','POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
     recipes.update( {'_id': ObjectId(recipe_id)},
@@ -70,6 +70,11 @@ def update_recipe(recipe_id):
         'recipe_author': request.form.get('recipe_author'),
         'recipe_image_url': request.form.get('recipe_image_url')
     })
+    return redirect(url_for('index'))
+    
+@app.route('/delete_recipe/<recipe_id>', methods = ['GET','POST'])
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('index'))
     
     
