@@ -55,16 +55,19 @@
      text-align: center;
  }
 
- .card {
-     height: 300px;
+ /*.card {*/
+ /*    height: 300px;*/
 
- }
+ /*}*/
 
- .card-content {
-     height: 100px;
-     overflow: auto;
- }
+ /*.card-content {*/
+ /*    height: 100px;*/
+ /*    overflow: auto;*/
+ /*}*/
 
+.whole-card{
+    max-height: 350px;
+}
  .display-btn {
      margin-left: 10px;
      margin-right: 10px;
