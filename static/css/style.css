@@ -1,58 +1,74 @@
  @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+ @import url('https://fonts.googleapis.com/css?family=Bitter|Dancing+Script:400,700');
 
  body {
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
+     font-family: 'Bitter', sans-serif;
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
  }
 
  main {
-   flex: 1 0 auto;
+     flex: 1 0 auto;
+ }
+
+ .brand-logo {
+     font-family: 'Dancing Script', sans-serif;
+     font-weight: 700;
  }
 
  /*Background image */
-
  .bg {
-   background: url("/static/images/med-food.jpg") no-repeat center center fixed;
-   height: 350px;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: relative;
-   width: 100%;
+
+     background-image: url('/static/images/med-food.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     min-height: 300px;
  }
 
+/*Darken the background image*/
  .overlay {
-   position: relative;
-   top: 0;
-   left: 0;
-   height: 350px;
-   width: 100%;
-   background-color: rgba(0, 0, 0, 0.3);
+    
+     background-color: rgba(0, 0, 0, 0.3);
+ }
+
+ h4 {
+     font-family: 'Dancing Script', sans-serif;
+     font-weight: 400;
+ }
+ 
+ .register{
+     font:  white;
+ }
+
+ .in-middle {
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     display: flex;
+     color: white;
  }
 
  .main {
-   color: white;
-   text-align: center;
+     color: white;
+     text-align: center;
  }
 
-.card {
-    height: 300px; 
-    
-}
+ .card {
+     height: 300px;
 
-.card-content {
-    height: 100px; 
-    overflow: auto;
-}
+ }
 
-.display-btn {
-    margin-left: 10px;
-    margin-right: 10px;
-}
+ .card-content {
+     height: 100px;
+     overflow: auto;
+ }
+
+ .display-btn {
+     margin-left: 10px;
+     margin-right: 10px;
+ }
+ 
 
  

@@ -1,9 +1,12 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session,flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import bcrypt
 
 app = Flask(__name__)
+
+app.secret_key = 'randomstring123'
 
 MONGODB_URI = os.getenv("MONGO_URI")
 print("Mongo is connected!")
@@ -16,9 +19,20 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    return render_template("index.html", 
+    flash('Wrong email or password 1')
+    if 'username' in session:
+        flash('Wrong email or password 2')
+        return render_template("index.html", username=session['username'],
                            recipes=mongo.db.recipes.find())
-    
+    flash('Wrong email or password 3')
+    return render_template("index.html", username='',
+                           recipes=mongo.db.recipes.find())
+                           
+@app.route('/logout')
+def logout():
+    session['username'] = ''
+    return redirect(url_for('index'))
+
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -76,6 +90,39 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('index'))
+  
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if request.method == 'POST':
+        users = mongo.db.users
+        login_user = users.find_one({'name' : request.form['username']})
+    
+        if login_user:
+            if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+                session['username'] = request.form['username']
+                return render_template("index.html", username=session['username'],
+                           recipes=mongo.db.recipes.find())
+       
+    return render_template('login.html')
+
+                       
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form['username']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('register.html')
+    
+    
     
     
 if __name__ == '__main__':
