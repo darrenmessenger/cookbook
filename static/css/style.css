@@ -1,77 +1,50 @@
- @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
- @import url('https://fonts.googleapis.com/css?family=Bitter|Dancing+Script:400,700');
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Bitter|Dancing+Script:400,700");
+/* Default font and display settings */
+body {
+  font-family: 'Bitter', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
 
- body {
-     font-family: 'Bitter', sans-serif;
-     display: flex;
-     min-height: 100vh;
-     flex-direction: column;
- }
+main {
+  flex: 1 0 auto; }
 
- main {
-     flex: 1 0 auto;
- }
+/* Change the font for the paragraph under the main title */
+.main {
+  font-family: 'Dancing Script', sans-serif;
+  font-weight: 700; }
 
- .brand-logo {
-     font-family: 'Dancing Script', sans-serif;
-     font-weight: 700;
- }
+/*Background image */
+.bg {
+  background-image: url("/static/images/med-food.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 300px; }
 
- /*Background image */
- .bg {
+/*Darken the background image so that text can be read*/
+.overlay {
+  background-color: rgba(0, 0, 0, 0.3); }
 
-     background-image: url('/static/images/med-food.jpg');
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-     min-height: 300px;
- }
+/*Darken the background image even more so that text can be read*/
+.overlay-dark {
+  background-color: rgba(0, 0, 0, 0.5); }
 
-/*Darken the background image*/
- .overlay {
-    
-     background-color: rgba(0, 0, 0, 0.3);
- }
+/* Remove most of the padding around the title in the card */
+#card-image-title {
+  padding: 0 3px 5px 3px; }
 
- h4 {
-     font-family: 'Dancing Script', sans-serif;
-     font-weight: 400;
- }
- 
- .register{
-     font:  white;
- }
+/* Ensure the headings and buttons are in the middle of the background image */
+.in-middle {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white; }
 
- .in-middle {
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     display: flex;
-     color: white;
- }
+/* Make the text white on the main page */
+.main {
+  color: white; }
 
- .main {
-     color: white;
-     text-align: center;
- }
-
- /*.card {*/
- /*    height: 300px;*/
-
- /*}*/
-
- /*.card-content {*/
- /*    height: 100px;*/
- /*    overflow: auto;*/
- /*}*/
-
-.whole-card{
-    max-height: 350px;
-}
- .display-btn {
-     margin-left: 10px;
-     margin-right: 10px;
- }
- 
-
- 
+/*# sourceMappingURL=style.css.map */
