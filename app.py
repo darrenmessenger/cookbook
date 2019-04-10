@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session,flash
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -19,12 +19,9 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    flash('Wrong email or password 1')
     if 'username' in session:
-        flash('Wrong email or password 2')
         return render_template("index.html", username=session['username'],
                            recipes=mongo.db.recipes.find())
-    flash('Wrong email or password 3')
     return render_template("index.html", username='',
                            recipes=mongo.db.recipes.find())
                            
@@ -96,13 +93,19 @@ def login():
     if request.method == 'POST':
         users = mongo.db.users
         login_user = users.find_one({'name' : request.form['username']})
+        
+        if not login_user:
+            flash('Incorrect username')  
     
         if login_user:
+            
             if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
                 session['username'] = request.form['username']
+                flash('You have been successfully logged in')  
                 return render_template("index.html", username=session['username'],
                            recipes=mongo.db.recipes.find())
-       
+     
+            flash('Incorrect password')  
     return render_template('login.html')
 
                        
@@ -117,9 +120,8 @@ def register():
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
+        flash('That username already exists!')  
         
-        return 'That username already exists!'
-
     return render_template('register.html')
     
     

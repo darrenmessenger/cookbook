@@ -9,10 +9,19 @@
         </div>
         {% if username =='' %}
           <div class="row center">
-            <a class="btn-large waves-effect waves-light teal lighten-1" href="{{ url_for('login') }}">Log in</a>
+            <a class="btn btn-primary btn-block waves-effect" href="{{ url_for('login') }}">Log in</a>
             <h6 class="white-text">Don't have an account? <a class="white-text"href="{{ url_for('register') }}"><i><b>Sign up here</i></b></a></h6>
           </div>
         {% endif %}
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
     </div>
   </div>
   <div class="parallax"><img src="{{url_for('static', filename='images/med-food.jpg')}}" alt="Unsplashed background img 1"></div>
@@ -41,4 +50,5 @@
     </div>
   {% endif %} 
   {% endfor %} 
+  
 {% endblock %}

@@ -5,14 +5,34 @@
             <h1>Register</h1>
             <form method=POST action="{{ url_for('register') }}">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Username</label>
-                    <input type="text" class="form-control" name="username" placeholder="Username">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input type="text" type="email" class="form-control validate right-alert" required="" aria-required="true" name="username" placeholder="Username">
+                            <label for="username" data-error="Please enter a username.">Username</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input type="password" class="form-control validate right-alert" required="" aria-required="true" name="pass" placeholder="Password">
+                            <label for="password" data-error="Please enter a password.">Password</label>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button> {% with messages = get_flashed_messages() %} {% if messages %}
+                        <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %} {% endwith %}
+                    </div>
+                </div>
             </form>
             <br>
         </div>
