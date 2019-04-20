@@ -2,7 +2,8 @@ $(document).ready(function() {
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
-    
+    $('.dropdown-trigger').dropdown();
+    $('select').formSelect();
     $('select').material_select();
 
     // for HTML5 "required" attribute

@@ -34,6 +34,17 @@
         </div>
       </div>
       <div class="row">
+        <div class="input-field col s12 m6">
+          <h5>Category</h5>
+            <select id="category" name="recipe_category">
+                  <option value="" disabled selected>Choose Category</option>
+                  {% for cat in categories %}
+                      <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                  {% endfor %}
+                </select>
+        </div>
+      </div>
+      <div class="row">
         <div class="input-field col s12">
           <h5>Author</h5>
           <input id="recipe_author" name="recipe_author" type="text" class="validate" value="{{recipe.recipe_author}}">

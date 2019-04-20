@@ -21,9 +21,9 @@ mongo = PyMongo(app)
 def index():
     if 'username' in session:
         return render_template("index.html", username=session['username'],
-                           recipes=mongo.db.recipes.find())
+                           recipes=mongo.db.recipes.find(),categories=mongo.db.categories.find())
     return render_template("index.html", username='',
-                           recipes=mongo.db.recipes.find())
+                           recipes=mongo.db.recipes.find(),categories=mongo.db.categories.find())
                            
 @app.route('/logout')
 def logout():
@@ -40,10 +40,9 @@ def categories():
     
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('add_recipe.html')
-    
+    return render_template('add_recipe.html',
+                           categories=mongo.db.categories.find())
 
-    
 @app.route('/add_recipe', methods = ['GET','POST'])
 def insert_recipe():
         if request.method == 'POST':
@@ -51,6 +50,7 @@ def insert_recipe():
                 'recipe_description': request.form.get('recipe_description'),
                 'recipe_ingredients': request.form.get('recipe_ingredients'),
                 'recipe_method': request.form.get('recipe_method'),
+                'recipe_category': request.form.get('recipe_category'),
                 'recipe_author': request.form.get('recipe_author'),
                 'recipe_image_url': request.form.get('recipe_image_url')
             }
@@ -59,10 +59,12 @@ def insert_recipe():
 
             return redirect(url_for('index'))
             
+
 @app.route('/edit_recipe/<recipe_id>', methods = ['GET','POST'])
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html',
-    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),
+    categories=mongo.db.categories.find())
     
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
@@ -78,6 +80,7 @@ def update_recipe(recipe_id):
         'recipe_description': request.form.get('recipe_description'),
         'recipe_ingredients': request.form.get('recipe_ingredients'),
         'recipe_method': request.form.get('recipe_method'),
+        'recipe_category': request.form.get('recipe_category'),
         'recipe_author': request.form.get('recipe_author'),
         'recipe_image_url': request.form.get('recipe_image_url')
     })
@@ -124,8 +127,21 @@ def register():
         
     return render_template('register.html')
     
+@app.route('/recipe_filtered', methods = ['POST'])
+def recipe_filtered():
+    recipes=mongo.db.recipes
+    category = request.form.get('recipe_category')
+    recipes=mongo.db.recipes.find({'recipe_category': category})
     
     
+
+    if 'username' in session:
+        return render_template("index.html", username=session['username'],
+                           recipes=recipes,categories=mongo.db.categories.find(),category=category)
+    return render_template("index.html", username='',
+                           recipes=recipes,categories=mongo.db.categories.find(),category=category)
+    
+
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

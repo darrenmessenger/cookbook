@@ -4,7 +4,7 @@
 
   <div class="row">
     <h1>Add a New Recipe</h1>
-     <form action="{{ url_for('insert_recipe') }}" method="POST"  class="col s12">
+    <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">title</i>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">description</i>
-          <input id="recipe_description"  name="recipe_description" type="text" class="validate">
+          <input id="recipe_description" name="recipe_description" type="text" class="validate">
           <label for="recipe_description">Recipe Description</label>
         </div>
       </div>
@@ -33,6 +33,21 @@
           <label for="recipe_method">Method</label>
         </div>
       </div>
+
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <i class="material-icons prefix">poll</i>
+          <select id="category" name="recipe_category">
+                  <option value="" disabled selected>Choose Category</option>
+                  {% for cat in categories %}
+                      <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                  {% endfor %}
+                </select>
+          <label>Recipe Category</label>
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">person</i>
