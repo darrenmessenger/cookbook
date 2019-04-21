@@ -30,17 +30,29 @@
     <div class="form-group">
       <div class="row">
         <div class="input-field col m6">
-          <select id="category" name="recipe_category">
-            <option disabled selected>{{category}}</option>
-            {% for cat in categories %}
-                <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+          <select id="course" name="course_name">
+            <option disabled selected>{{course}}</option>
+            {% for course in courses %}
+                <option value="{{course.course_name}}">{{course.course_name}}</option>
             {% endfor %}
           </select>
-          <label>Recipe Category</label>
+          <label>Course</label>
+        </div>
+        <div class="input-field col m6">
+          <select id="author" name="author_name">
+            <option disabled selected>{{author}}</option>
+            {% for author in authors %}
+                <option value="{{author.author_name}}">{{author.author_name}}</option>
+            {% endfor %}
+          </select>
+          <label>Author</label>
         </div>
         <div class="row">
-          <div class="col m12">
-            <button type="submit" class="btn btn-primary btn-block">Filter</button>
+          <div class=" offset-m3 col m3">
+            <button type="submit" class="btn btn-primary btn-block">Filter Recipes</button>
+          </div>
+          <div class="col m3">
+            <a href="{{ url_for('index') }}"><button class="btn btn-primary btn-block orange">Reset Filters</button></a>
           </div>
         </div>
         </div>

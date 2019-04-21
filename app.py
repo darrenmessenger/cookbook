@@ -21,9 +21,9 @@ mongo = PyMongo(app)
 def index():
     if 'username' in session:
         return render_template("index.html", username=session['username'],
-                           recipes=mongo.db.recipes.find(),categories=mongo.db.categories.find())
+                           recipes=mongo.db.recipes.find(),courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=None,author=None)
     return render_template("index.html", username='',
-                           recipes=mongo.db.recipes.find(),categories=mongo.db.categories.find())
+                           recipes=mongo.db.recipes.find(),courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=None,author=None)
                            
 @app.route('/logout')
 def logout():
@@ -34,14 +34,14 @@ def logout():
 def about():
     return render_template('about.html')
     
-@app.route('/categories')
-def categories():
-    return render_template('categories.html')
+@app.route('/authos')
+def authors():
+    return render_template('authors.html')
     
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('add_recipe.html',
-                           categories=mongo.db.categories.find())
+                           authors=mongo.db.authors.find())
 
 @app.route('/add_recipe', methods = ['GET','POST'])
 def insert_recipe():
@@ -50,7 +50,7 @@ def insert_recipe():
                 'recipe_description': request.form.get('recipe_description'),
                 'recipe_ingredients': request.form.get('recipe_ingredients'),
                 'recipe_method': request.form.get('recipe_method'),
-                'recipe_category': request.form.get('recipe_category'),
+                'recipe_course': request.form.get('recipe_course'),
                 'recipe_author': request.form.get('recipe_author'),
                 'recipe_image_url': request.form.get('recipe_image_url')
             }
@@ -64,7 +64,8 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     return render_template('edit_recipe.html',
     recipe=mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}),
-    categories=mongo.db.categories.find())
+    courses=mongo.db.courses.find(),
+    authors=mongo.db.authors.find())
     
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
@@ -80,7 +81,7 @@ def update_recipe(recipe_id):
         'recipe_description': request.form.get('recipe_description'),
         'recipe_ingredients': request.form.get('recipe_ingredients'),
         'recipe_method': request.form.get('recipe_method'),
-        'recipe_category': request.form.get('recipe_category'),
+        'recipe_course': request.form.get('recipe_course'),
         'recipe_author': request.form.get('recipe_author'),
         'recipe_image_url': request.form.get('recipe_image_url')
     })
@@ -106,8 +107,8 @@ def login():
                 session['username'] = request.form['username']
                 flash('You have been successfully logged in')  
                 return render_template("index.html", username=session['username'],
-                           recipes=mongo.db.recipes.find())
-     
+                           recipes=mongo.db.recipes.find(),courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=None,author=None)
+
             flash('Incorrect password')  
     return render_template('login.html')
 
@@ -130,16 +131,23 @@ def register():
 @app.route('/recipe_filtered', methods = ['POST'])
 def recipe_filtered():
     recipes=mongo.db.recipes
-    category = request.form.get('recipe_category')
-    recipes=mongo.db.recipes.find({'recipe_category': category})
+    course = request.form.get('course_name')
+    author = request.form.get('author_name')
+    if course is not None and author is not None:
+        recipes=mongo.db.recipes.find({'recipe_course': course,'recipe_author': author})
+    elif course is not None:
+        recipes=mongo.db.recipes.find({'recipe_course': course})  
+    elif author is not None:
+        recipes=mongo.db.recipes.find({'recipe_author': author}) 
+    else:
+        recipes=mongo.db.recipes.find()
     
     
-
     if 'username' in session:
         return render_template("index.html", username=session['username'],
-                           recipes=recipes,categories=mongo.db.categories.find(),category=category)
+                           recipes=recipes,courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=course,author=author)
     return render_template("index.html", username='',
-                           recipes=recipes,categories=mongo.db.categories.find(),category=category)
+                           recipes=recipes,courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=course,author=author)
     
 
     
