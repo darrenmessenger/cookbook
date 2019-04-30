@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, request, url_for, session, f
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import bcrypt
+import sys
 
 app = Flask(__name__)
 
@@ -30,13 +31,15 @@ def logout():
     session['username'] = ''
     return redirect(url_for('index'))
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-    
-@app.route('/authos')
+@app.route('/courses')
+def courses():
+    return render_template("courses.html",
+                            courses=mongo.db.courses.find())
+
+@app.route('/authors')
 def authors():
-    return render_template('authors.html')
+    return render_template("authors.html",
+                            authors=mongo.db.authors.find())
     
 @app.route('/add_recipe')
 def add_recipe():
@@ -133,6 +136,10 @@ def recipe_filtered():
     recipes=mongo.db.recipes
     course = request.form.get('course_name')
     author = request.form.get('author_name')
+    title_search = request.form.get('title_search')
+
+    if title_search is not None:
+        recipes=mongo.db.recipes.find({"recipe_name": { "$regex": title_search}})
     if course is not None and author is not None:
         recipes=mongo.db.recipes.find({'recipe_course': course,'recipe_author': author})
     elif course is not None:
@@ -148,8 +155,76 @@ def recipe_filtered():
                            recipes=recipes,courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=course,author=author)
     return render_template("index.html", username='',
                            recipes=recipes,courses=mongo.db.courses.find(),authors=mongo.db.authors.find(),course=course,author=author)
-    
+                         
+@app.route('/get_courses')
+def get_courses():
+    return render_template('courses.html',
+                           courses=mongo.db.courses.find())
 
+@app.route('/delete_course/<course_id>', methods=["POST"])
+def delete_course(course_id):
+    mongo.db.courses.remove({'_id': ObjectId(course_id)})
+    return redirect(url_for('get_courses'))
+
+@app.route('/edit_course/<course_id>')
+def edit_course(course_id):
+    return render_template('edit_course.html',
+    course=mongo.db.courses.find_one({'_id': ObjectId(course_id)}))
+
+
+@app.route('/update_course/<course_id>', methods=['POST'])
+def update_course(course_id):
+    course = mongo.db.courses
+    course.update( {'_id': ObjectId(course_id)},
+    {
+        'course_name': request.form.get('course_name')
+    })
+    return redirect(url_for('get_courses'))
+
+@app.route('/insert_course', methods=['POST'])
+def insert_course():
+    course_doc = {'course_name': request.form.get('course_name')}
+    mongo.db.courses.insert_one(course_doc)
+    return redirect(url_for('get_courses'))
+
+@app.route('/add_course')
+def add_course():
+    return render_template('add_course.html')
+    
+@app.route('/get_authors')
+def get_authors():
+    return render_template('authors.html',
+                           authors=mongo.db.authors.find())
+
+@app.route('/delete_authors/<author_id>', methods=["POST"])
+def delete_author(author_id):
+    mongo.db.authors.remove({'_id': ObjectId(author_id)})
+    return redirect(url_for('get_authors'))
+
+@app.route('/edit_author/<author_id>')
+def edit_author(author_id):
+    return render_template('edit_author.html',
+    author=mongo.db.authors.find_one({'_id': ObjectId(author_id)}))
+
+
+@app.route('/update_author/<author_id>', methods=['POST'])
+def update_author(author_id):
+    author = mongo.db.authors
+    author.update( {'_id': ObjectId(author_id)},
+    {
+        'author_name': request.form.get('author_name')
+    })
+    return redirect(url_for('get_authors'))
+
+@app.route('/insert_author', methods=['POST'])
+def insert_author():
+    author_doc = {'author_name': request.form.get('author_name')}
+    mongo.db.authors.insert_one(author_doc)
+    return redirect(url_for('get_authors'))
+
+@app.route('/add_author')
+def add_author():
+    return render_template('add_author.html')
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

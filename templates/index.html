@@ -25,11 +25,11 @@
 </div>
 
 <div class="row container">
-  <h2>Filter the CookBook</h2>
+  <h2 class="center">Filter the CookBook</h2>
   <form method=POST action="/recipe_filtered">
     <div class="form-group">
       <div class="row">
-        <div class="input-field col m6">
+        <div class="input-field col m4">
           <select id="course" name="course_name">
             <option disabled selected>{{course}}</option>
             {% for course in courses %}
@@ -38,7 +38,7 @@
           </select>
           <label>Course</label>
         </div>
-        <div class="input-field col m6">
+        <div class="input-field col m4">
           <select id="author" name="author_name">
             <option disabled selected>{{author}}</option>
             {% for author in authors %}
@@ -46,6 +46,12 @@
             {% endfor %}
           </select>
           <label>Author</label>
+        </div>
+        <div class="row">
+          <div class="input-field col m4">
+            <label for="title_search" >Recipe Title Search:</label>
+            <textarea name="title_search" id="title_search" class="materialize-textarea"></textarea>
+          </div>
         </div>
         <div class="row">
           <div class=" offset-m3 col m3">
