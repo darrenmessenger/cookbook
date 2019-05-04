@@ -3,8 +3,10 @@ $(document).ready(function() {
     $('.parallax').parallax();
     $('.tooltipped').tooltip();
     $('.dropdown-trigger').dropdown();
+    $('.slider').slider();
     $('select').formSelect();
     $('select').material_select();
+    
 
     // for HTML5 "required" attribute
     $("select[required]").css({

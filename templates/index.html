@@ -1,27 +1,55 @@
 {% extends 'base.html'%} {% block content %}
 
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container overlay">
-      <h1 class="header center teal-text text-lighten-2">Welcome {{ username }}{% if username !='' %},{% endif %} to the CookBook</h1>
-      <div class="row center">
-        <h4 class="main header col s12 light">Recipes created for your enjoyment by passionate 'chefs' like yourself!</h4>
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <img src="{{ url_for('static', filename='images/food-background-5.jpg') }}">
+      <div class="caption right-align overlay">
+        <h4>"All you need is love. But a little chocolate now and then doesn't hurt."</h3>
+          <h6 class="light grey-text text-lighten-3">Charles M. Schulz</h5>
       </div>
-      {% if username =='' %}
-      <div class="row center">
-        <a class="btn btn-primary btn-block waves-effect" href="{{ url_for('login') }}">Log in</a>
-        <h6 class="white-text">Don't have an account? <a class="white-text" href="{{ url_for('register') }}"><i><b>Sign up here</i></b></a></h6>
+    </li>
+    <li>
+      <img src="{{ url_for('static', filename='images/food-background-4.jpg') }}">
+      <div class="caption left-align overlay">
+        <h4>“If more of us valued food and cheer and song above hoarded gold, it would be a merrier world.” </h3>
+          <h6 class="light grey-text text-lighten-3">J.R.R. Tolkien</h5>
       </div>
-      {% endif %} {% with messages = get_flashed_messages() %} {% if messages %}
-      <ul class=flashes>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% endwith %}
+    </li>
+    <li>
+      <img src="{{ url_for('static', filename='images/food-background-2.jpg') }}">
+      <div class="caption right-align overlay">
+        <h4>“Ask not what you can do for your country. Ask what’s for lunch.”</h3>
+          <h6 class="light grey-text text-lighten-3">Orson Welles</h5>
+      </div>
+    </li>
+    <li>
+      <img src="{{ url_for('static', filename='images/food-background-3.jpg') }}">
+      <div class="caption left-align overlay">
+        <h4>“I cook with wine, sometimes I even add it to the food.”</h3>
+          <h6 class="light grey-text text-lighten-3">W.C. Fields</h5>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="row container">
+    <h3 class="header center ">Welcome {{ username }}{% if username !='' %},{% endif %} to the CookBook</h3>
+    <div class="row center">
+      <h5 class="main header  black-text col s12 "> If you login to the site then you can add or amend your own recipe ideas, or simply browse other users delicious recipes!<br> Simply <a class="orange-text " href="{{url_for('login')}}">Login</a> or <a class="orange-text" href="{{url_for('register')}}">Register</a>        to enter your own recipe.</h5>
     </div>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
   </div>
-  <div class="parallax"><img src="{{url_for('static', filename='images/med-food.jpg')}}" alt="Unsplashed background img 1"></div>
+</div>
+<div class="parallax-container">
+  <div class="parallax"> <img src="{{ url_for('static', filename='images/food-background.jpg') }}"></div>
 </div>
 
 <div class="row container">
@@ -33,7 +61,7 @@
           <select id="course" name="course_name">
             <option disabled selected>{{course}}</option>
             {% for course in courses %}
-                <option value="{{course.course_name}}">{{course.course_name}}</option>
+                <option value="{{course.course_name}}">{{course.course_name}}</option> 
             {% endfor %}
           </select>
           <label>Course</label>
@@ -47,45 +75,77 @@
           </select>
           <label>Author</label>
         </div>
-        <div class="row">
-          <div class="input-field col m4">
-            <label for="title_search" >Recipe Title Search:</label>
-            <textarea name="title_search" id="title_search" class="materialize-textarea"></textarea>
-          </div>
+
+        <div class="switch">
+          <label> 
+                  {% if is_vegetarian %}
+                    <input id="is_vegetarian" name="is_vegetarian" type="checkbox" checked>
+                  {% else %}
+                    <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
+                  {% endif %}
+                  <span class="lever"></span>
+                  Is Vegetarian
+                </label>
         </div>
+        <div class="switch">
+          <label>
+                  {% if is_vegan %}
+                    <input id="is_vegan" name="is_vegan" type="checkbox" checked>
+                  {% else %}
+                    <input id="is_vegan" name="is_vegan" type="checkbox">
+                  {% endif %}
+                  <span class="lever"></span>
+                  Is Vegan
+                </label>
+        </div>
+        <div class="switch">
+          <label>
+                  {% if is_glutenfree %}
+                    <input id="is_glutenfree" name="is_glutenfree" type="checkbox" checked>
+                  {% else %}
+                    <input id="is_glutenfree" name="is_glutenfree" type="checkbox">
+                  {% endif %}
+                  <span class="lever"></span>
+                  Is Gluten Free
+                </label>
+        </div>
+
         <div class="row">
           <div class=" offset-m3 col m3">
             <button type="submit" class="btn btn-primary btn-block">Filter Recipes</button>
           </div>
           <div class="col m3">
-            <a href="{{ url_for('index') }}"><button class="btn btn-primary btn-block orange">Reset Filters</button></a>
+            <button type="submit" name="reset_button" value="reset" class="btn btn-primary btn-block orange">Reset Filters</button>
           </div>
-        </div>
-        </div>
-        </div>
-  </form>
-
-  </div>
-
-  <div class="row container">
-    {% for recipe in recipes %} {% if loop.index0 !=0 and loop.index0 % 2 == 0 %}
-  </div>
-  {% endif %} {% if loop.index0 == 0 or loop.index0 %2 == 0 %}
-  <div class="row">
-    {% endif %}
-    <div class="col s12 m6">
-      <div class="card hoverable">
-        <div class="card-image">
-          <img src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
-          <span id="card-image-title" class="overlay-dark card-title">{{recipe.recipe_name}}</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{url_for('display_recipe', recipe_id=recipe._id)}}"><i class="material-icons">navigate_next</i></a>
-          </form>
-        </div>
-        <div class="card-content">
-          <p>{{recipe.recipe_description | truncate(180)}}</p>
         </div>
       </div>
     </div>
-    {% if loop.last %}
+  </form>
+</div>
+
+
+
+
+
+<div class="row container">
+  {% for recipe in recipes %} {% if loop.index0 !=0 and loop.index0 % 2 == 0 %}
+</div>
+{% endif %} {% if loop.index0 == 0 or loop.index0 %2 == 0 %}
+<div class="row">
+  {% endif %}
+  <div class="col s12 m6">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
+        <span id="card-image-title" class="overlay-dark card-title">{{recipe.recipe_name}}</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{url_for('display_recipe', recipe_id=recipe._id)}}"><i class="material-icons">navigate_next</i></a>
+        </form>
+      </div>
+      <div class="card-content">
+        <p>{{recipe.recipe_description | truncate(180)}}</p>
+      </div>
+    </div>
   </div>
-  {% endif %} {% endfor %} {% endblock %}
+  {% if loop.last %}
+</div>
+{% endif %} {% endfor %} {% endblock %}

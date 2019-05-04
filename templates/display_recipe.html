@@ -9,7 +9,9 @@
                 <img src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
                 <p>Author: {{recipe.recipe_author}}</p>
                 <p>Course: {{recipe.recipe_course}}</p>
-                <p>Category: {{recipe.recipe_category}}</p>
+                {% if recipe.recipe_is_vegetarian %}<p>Vegetarian</p>{% endif %}
+                {% if recipe.recipe_is_vegan %}<p>Vegan</p>{% endif %}
+                {% if recipe.recipe_is_glutenfree %}<p>Gluten Free</p>{% endif %}
                 <h3>Ingredients</h3>
                 <textarea class="materialize-textarea">{{recipe.recipe_ingredients}}</textarea>
                 <h3>Method</h3>

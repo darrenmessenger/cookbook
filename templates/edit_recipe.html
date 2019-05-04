@@ -60,17 +60,56 @@
         <div class="input-field col s12">
           <h5>Image URL</h5>
           <input id="recipe_image_url" name="recipe_image_url" type="text" class="validate" value="{{recipe.recipe_image_url}}">
-
         </div>
       </div>
+      
+      <div class="row">
+            <div class="switch">
+                <label>
+                    {% if recipe.recipe_is_vegetarian %}
+                          <input id="is_vegetarian" name="is_vegetarian" type="checkbox" checked>
+                    {% else %}
+                         <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
+                    {% endif%}
+                  <span class="lever"></span>
+                  Is Vegetarian
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="switch">
+                <label>
+                    {% if recipe.recipe_is_vegan %}
+                          <input id="is_vegan" name="is_vegan" type="checkbox" checked>
+                    {% else %}
+                         <input id="is_vegan" name="is_vegan" type="checkbox">
+                    {% endif%}
+                  <span class="lever"></span>
+                  Is Vegan
+                </label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="switch">
+                <label>
+                    {% if recipe.recipe_is_glutenfree %}
+                          <input id="is_glutenfree" name="is_glutenfree" type="checkbox" checked>
+                    {% else %}
+                         <input id="is_glutenfree" name="is_glutenfree" type="checkbox">
+                    {% endif%}
+                  <span class="lever"></span>
+                  Is Gluten Free
+                </label>
+            </div>
+        </div>
 
       <div class="col s12">
-
         <button class="btn waves-effect waves-light right" type="submit" name="action">Update Recipe
             <i class="material-icons right">send</i>
         </button>
-        <form action="{{url_for('delete_recipe', recipe_id=recipe._id)}}" method="POST"><button type="submit" class="waves-effect waves-light btn btn_small">Delete</button>
-        <button class="btn waves-effect waves-light right" type="reset">Reset
+        <form action="{{url_for('delete_recipe', recipe_id=recipe._id)}}" method="POST"><button type="submit" class="waves-effect waves-light btn btn_small red">Delete</button>
+        <button class="btn waves-effect waves-light right green" type="reset">Reset
             <i class="material-icons right" >reset</i>
         </button>
       </div>

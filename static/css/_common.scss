@@ -22,8 +22,9 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 300px;
+    min-height: 200px;
 }
+
 
 /*Darken the background image so that text can be read*/
 .overlay {
@@ -40,6 +41,11 @@ main {
     padding: 0 3px 5px 3px;
 }
 
+.card-image{
+    
+    min-height: 200px;
+}
+
 /* Ensure the headings and buttons are in the middle of the background image */
 .in-middle {
     flex-direction: column;
@@ -54,6 +60,17 @@ main {
     color: white;
 }
 
+.btn {
+    height: 24px;
+    line-height: 24px;
+    margin: 5px 5px;
+    padding: 0 0.5em;
+}
+
+.btn-large {
+  margin: 5px 5px;
+  padding: 0 0.5em; }
+  
 .btn_small {
     height: 24px;
     width: 60px;
@@ -61,5 +78,12 @@ main {
     margin: 5px 5px;
     padding: 0 0.5em;
 }
+
+.parallax-container {
+    height: 200px;
+}
+
+
+
 
 

@@ -37,13 +37,13 @@
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">poll</i>
-          <select id="category" name="recipe_category">
-                  <option value="" disabled selected>Choose Category</option>
-                  {% for cat in categories %}
-                      <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+          <select id="course" name="recipe_course">
+                  <option value="" disabled selected>Choose Course</option>
+                  {% for course in courses %}
+                      <option value="{{course.course_name}}">{{course.course_name}}</option>
                   {% endfor %}
                 </select>
-          <label>Recipe Category</label>
+          <label>Recipe Course</label>
         </div>
       </div>
 
@@ -51,11 +51,16 @@
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">person</i>
-          <input id="recipe_author" name="recipe_author" type="text" class="validate">
-          <label for="recipe_author">Recipe Author</label>
+          <select id="author" name="recipe_author">
+                  <option value="" disabled selected>Choose Author</option>
+                  {% for author in authors %}
+                      <option value="{{author.author_name}}">{{author.author_name}}</option>
+                  {% endfor %}
+                </select>
+          <label>Recipe Author</label>
         </div>
       </div>
-
+      
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">image</i>
@@ -63,8 +68,38 @@
           <label for="recipe_image_url">Enter the Recipe Image URL</label>
         </div>
       </div>
+      
+      <div class="row">
+            <div class="switch">
+                <label>
+                  <input id="is_vegetarian" name="is_vegetarian" type="checkbox">
+                  <span class="lever"></span>
+                  Is Vegetarian
+                </label>
+            </div>
+        </div>
+        
+         <div class="row">
+            <div class="switch">
+                <label>
+                  <input id="is_vegan" name="is_vegan" type="checkbox">
+                  <span class="lever"></span>
+                  Is Vegan
+                </label>
+            </div>
+        </div>
 
-      <div class="col s12">
+        <div class="row">
+            <div class="switch">
+                <label>
+                  <input id="is_glutenfree" name="is_glutenfree" type="checkbox">
+                  <span class="lever"></span>
+                  Is Gluten Free
+                </label>
+            </div>
+        </div>
+        
+       <div class="col s12">
         <button class="btn waves-effect waves-light right" type="submit" name="action">Add Recipe
             <i class="material-icons right">send</i>
           </button>

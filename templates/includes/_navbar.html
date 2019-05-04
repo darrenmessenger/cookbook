@@ -4,18 +4,28 @@
       <a href="{{url_for('index')}}" class="brand-logo">Cookbook</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect waves-light btn" href="{{url_for('add_recipe')}}">Add Recipe <i class="material-icons right">add</i></a></li>
-        <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
-        <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
-        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        {% if username !='' %}
+            <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
+            <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
+            <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        {% else %}
+            <li><a href="{{url_for('login')}}">Log In</a></li>
+            <li><a href="{{url_for('register')}}">Register</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-   <li><a class="waves-effect waves-light btn" href="{{url_for('add_recipe')}}">Add Recipe <i class="material-icons right">add</i></a></li>
-        <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
-        <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
-        <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        {% if username !='' %}
+            <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
+            <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
+            <li><a href="{{url_for('logout')}}">Log Out</a></li>
+        {% else %}
+            <li><a href="{{url_for('login')}}">Log In</a></li>
+            <li><a href="{{url_for('register')}}">Register</a></li>
+        {% endif %}
   </ul>
 </header>
