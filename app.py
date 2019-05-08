@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, session, flash
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
 import sys
@@ -154,6 +154,18 @@ def register():
         flash('That username already exists!')  
         
     return render_template('register.html')
+    
+@app.route('/search')
+def search():
+    """ Route for the search"""
+    query = request.args['query']
+    recipes = db_recipes.find({'$text': {'$search': query }})
+    if 'username' in session:
+        return render_template("index.html", username=session['username'],
+                               recipes=recipes,courses=db_courses.find(),authors=db_authors.find(),course=None,author=None,is_vegetarian=None,is_vegan=None,is_glutenfree=None)
+    return render_template("index.html", username='',
+                            recipes=recipes,courses=db_courses.find(),authors=db_authors.find(),course=None,author=None,is_vegetarian=None,is_vegan=None,is_glutenfree=None)
+
     
 @app.route('/recipe_filtered', methods = ['POST'])
 def recipe_filtered():

@@ -52,6 +52,20 @@
   <div class="parallax"> <img src="{{ url_for('static', filename='images/food-background.jpg') }}"></div>
 </div>
 
+<div class="container search">
+    <div class="col s12">
+      <div class="row">
+        <form action="{{ url_for('search') }}" class="search-form">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">search</i>
+            <input type="text" id="query" name="query">
+            <label for="query">Search for a recipe keyword</label>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+
 <div class="row container">
   <h2 class="center">Filter the CookBook</h2>
   <form method=POST action="/recipe_filtered">
