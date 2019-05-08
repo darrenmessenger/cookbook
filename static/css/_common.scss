@@ -42,7 +42,7 @@ main {
 }
 
 .card-image{
-    
+    background-image:url('/static/images/food-background.jpg');
     min-height: 200px;
 }
 
@@ -88,7 +88,9 @@ main {
     
 }
 
-
+nav .brand-logo {
+    margin-left: 20px;
+}
 
 
 

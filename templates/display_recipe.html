@@ -16,9 +16,10 @@
                 <textarea class="materialize-textarea">{{recipe.recipe_ingredients}}</textarea>
                 <h3>Method</h3>
                 <textarea class="materialize-textarea">{{recipe.recipe_method}}</textarea>
-                <a class="display-btn btn-floating btn-large tooltipped right waves-effect waves-light green" data-position="top" data-tooltip="Edit Recipe" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"><i class="material-icons">edit</i></a>
-                <a class="display-btn btn-floating btn-large tooltipped right waves-effect waves-light red" data-position="top" data-tooltip="Delete Recipe" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"><i class="material-icons">delete</i></a>
-
+                {% if username == recipe.recipe_entered_by %}
+                    <a class="display-btn btn-floating btn-large tooltipped right waves-effect waves-light green" data-position="top" data-tooltip="Edit Recipe" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"><i class="material-icons">edit</i></a>
+                    <a class="display-btn btn-floating btn-large tooltipped right waves-effect waves-light red" data-position="top" data-tooltip="Delete Recipe" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"><i class="material-icons">delete</i></a>
+                {% endif %}
 
             </div>
         </div>

@@ -36,6 +36,7 @@ main {
   padding: 0 3px 5px 3px; }
 
 .card-image {
+  background-image: url("/static/images/food-background.jpg");
   min-height: 200px; }
 
 /* Ensure the headings and buttons are in the middle of the background image */
@@ -72,5 +73,8 @@ main {
 
 .search {
   margin-top: 15px; }
+
+nav .brand-logo {
+  margin-left: 20px; }
 
 /*# sourceMappingURL=style.css.map */

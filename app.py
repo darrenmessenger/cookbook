@@ -76,7 +76,8 @@ def insert_recipe():
                 'recipe_image_url': request.form.get('recipe_image_url'),
                 'recipe_is_vegetarian':request.form.get('is_vegetarian'),
                 'recipe_is_vegan':request.form.get('is_vegan'),
-                'recipe_is_glutenfree':request.form.get('is_glutenfree')
+                'recipe_is_glutenfree':request.form.get('is_glutenfree'),
+                'recipe_entered_by' :session['username']
             }
            
             db_recipes.insert_one(recipe)
@@ -93,7 +94,7 @@ def edit_recipe(recipe_id):
     
 @app.route('/display_recipe/<recipe_id>')
 def display_recipe(recipe_id):
-    return render_template('display_recipe.html',
+    return render_template('display_recipe.html', username=session['username'],
     recipe=db_recipes.find_one({'_id': ObjectId(recipe_id)}))
     
 @app.route('/update_recipe/<recipe_id>', methods = ['GET','POST'])
