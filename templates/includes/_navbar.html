@@ -7,7 +7,7 @@
         {% if username !='' %}
             <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
             <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
-            <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
+            <li><a href="{{url_for('chefs')}}">Manage Chefs</a></li>
             <li><a href="{{url_for('logout')}}">Log Out</a></li>
         {% else %}
             <li><a href="{{url_for('login')}}">Log In</a></li>
@@ -21,7 +21,7 @@
         {% if username !='' %}
             <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
             <li><a href="{{url_for('courses')}}">Manage Courses</a></li>
-            <li><a href="{{url_for('authors')}}">Manage Authors</a></li>
+            <li><a href="{{url_for('chefs')}}">Manage Chefs</a></li>
             <li><a href="{{url_for('logout')}}">Log Out</a></li>
         {% else %}
             <li><a href="{{url_for('login')}}">Log In</a></li>

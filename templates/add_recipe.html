@@ -51,13 +51,13 @@
       <div class="row">
         <div class="input-field col s12 m6">
           <i class="material-icons prefix">person</i>
-          <select id="author" name="recipe_author">
-                  <option value="" disabled selected>Choose Author</option>
-                  {% for author in authors %}
-                      <option value="{{author.author_name}}">{{author.author_name}}</option>
+          <select id="chef" name="recipe_chef">
+                  <option value="" disabled selected>Choose Chef</option>
+                  {% for chef in chefs %}
+                      <option value="{{chef.chef_name}}">{{chef.chef_name}}</option>
                   {% endfor %}
                 </select>
-          <label>Recipe Author</label>
+          <label>Recipe Chef</label>
         </div>
       </div>
       
@@ -100,7 +100,7 @@
         </div>
         
        <div class="col s12">
-        <button class="btn waves-effect waves-light right" type="submit" name="action">Add Recipe
+        <button class="btn-small waves-effect waves-light right orange" type="submit" name="action">Add Recipe
             <i class="material-icons right">send</i>
           </button>
       </div>

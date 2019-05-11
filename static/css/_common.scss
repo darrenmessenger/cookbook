@@ -92,7 +92,24 @@ nav .brand-logo {
     margin-left: 20px;
 }
 
+.display_image{
+    background-image:url('/static/images/food-background.jpg');
+    min-height: 200px;
+    min-width: 200px;
+}
 
 
 
+.align{
+    display:block;
+    align: right;
+}
+
+.header h6{
+    margin-left:5px;
+}
+
+.btn-margin{
+    margin-left:10px;
+}
 

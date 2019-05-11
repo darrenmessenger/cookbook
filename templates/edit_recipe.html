@@ -46,11 +46,11 @@
       </div>
       <div class="row">
         <div class="input-field col s12 m6">
-          <h5>Author</h5>
-            <select id="author" name="recipe_author">
-                  <option disabled selected>{{recipe.recipe_author}}</option>
-                  {% for author in authors %}
-                      <option value="{{author.author_name}}">{{author.author_name}}</option>
+          <h5>Chef</h5>
+            <select id="chef" name="recipe_chef">
+                  <option disabled selected>{{recipe.recipe_chef}}</option>
+                  {% for chef in chefs %}
+                      <option value="{{chef.chef_name}}">{{chef.chef_name}}</option>
                   {% endfor %}
                 </select>
         </div>
@@ -105,11 +105,11 @@
         </div>
 
       <div class="col s12">
-        <button class="btn waves-effect waves-light right" type="submit" name="action">Update Recipe
+        <button class="btn-small waves-effect waves-light right orange" type="submit" name="action">Update Recipe
             <i class="material-icons right">send</i>
         </button>
         <form action="{{url_for('delete_recipe', recipe_id=recipe._id)}}" method="POST"><button type="submit" class="waves-effect waves-light btn btn_small red">Delete</button>
-        <button class="btn waves-effect waves-light right green" type="reset">Reset
+        <button class="btn-small waves-effect waves-light right blue" type="reset">Reset
             <i class="material-icons right" >reset</i>
         </button>
       </div>

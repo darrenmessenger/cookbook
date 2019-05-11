@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 
 """ Variables """
-db_users = mongo.db.userss
+db_users = mongo.db.users
 db_recipes = mongo.db.recipes
 db_courses = mongo.db.courses
 db_chefs = mongo.db.chefs
@@ -53,11 +53,9 @@ def courses():
 @app.route('/chefs')
 def chefs():
     """ Manage the chefs page """
-    if 'username' in session:
-        return render_template("chefs.html", chefs=db_chefs.find(), username=session['username'])
-    else:
-        return render_template("chefs.html", chefs=db_chefs.find(), username='')
-        
+    return render_template("chefs.html",
+                            chefs=db_chefs.find())
+
 
 @app.route('/add_recipe')
 def add_recipe():
@@ -258,11 +256,8 @@ def add_course():
     
 @app.route('/get_chefs')
 def get_chefs():
-    if 'username' in session:
-        return render_template("chefs.html", chefs=db_chefs.find(), username=session['username'])
-    else:
-        return render_template("chefs.html", chefs=db_chefs.find(), username='')
-
+    return render_template('chefs.html',
+                           chefs=db_chefs.find())
 
 @app.route('/delete_chefs/<chef_id>', methods=["POST"])
 def delete_chef(chef_id):
@@ -280,26 +275,20 @@ def update_chef(chef_id):
     chef = db_chefs
     chef.update( {'_id': ObjectId(chef_id)},
     {
-        'chef_name': request.form.get('chef_name'),
-        'chef_entered_by': session['username']
+        'chef_name': request.form.get('chef_name')
     })
     return redirect(url_for('get_chefs'))
 
 @app.route('/insert_chef', methods=['POST'])
 def insert_chef():
-    chef_doc = {
-        'chef_name': request.form.get('chef_name'),
-        'chef_entered_by': session['username']
-    }
+    chef_doc = {'chef_name': request.form.get('chef_name')}
     db_chefs.insert_one(chef_doc)
     return redirect(url_for('get_chefs'))
 
 @app.route('/add_chef')
 def add_chef():
     if 'username' in session:
-        return render_template('add_chef.html', username=session['username'])
-    else:
-        return render_template('add_chef.html', username='')
+    return render_template('add_chef.html')
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

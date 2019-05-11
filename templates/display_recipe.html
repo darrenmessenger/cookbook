@@ -6,8 +6,8 @@
             <div class="card-panel teal lighten-5">
                 <h1>{{recipe.recipe_name}}</h1>
                 <p>{{recipe.recipe_description}}</p>
-                <img class="responsive-img" src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
-                <p>Author: {{recipe.recipe_author}}</p>
+                <img class="responsive-img display_image" src="{{recipe.recipe_image_url}}" alt="recipe image"></img>
+                <p>Chef: {{recipe.recipe_chef}}</p>
                 <p>Course: {{recipe.recipe_course}}</p>
                 {% if recipe.recipe_is_vegetarian %}<p>Vegetarian</p>{% endif %}
                 {% if recipe.recipe_is_vegan %}<p>Vegan</p>{% endif %}

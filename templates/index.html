@@ -81,13 +81,13 @@
           <label>Course</label>
         </div>
         <div class="input-field col m4">
-          <select id="author" name="author_name">
-            <option disabled selected>{{author}}</option>
-            {% for author in authors %}
-                <option value="{{author.author_name}}">{{author.author_name}}</option>
+          <select id="chef" name="chef_name">
+            <option disabled selected>{{chef}}</option>
+            {% for chef in chefs %}
+                <option value="{{chef.chef_name}}">{{chef.chef_name}}</option>
             {% endfor %}
           </select>
-          <label>Author</label>
+          <label>Chef</label>
         </div>
 
         <div class="switch">
@@ -126,10 +126,10 @@
 
         <div class="row">
           <div class=" offset-m3 col m3">
-            <button type="submit" class="btn btn-primary btn-block">Filter Recipes</button>
+            <button type="submit" class="btn-small btn-primary btn-block orange">Filter Recipes</button>
           </div>
           <div class="col m3">
-            <button type="submit" name="reset_button" value="reset" class="btn btn-primary btn-block orange">Reset Filters</button>
+            <button type="submit" name="reset_button" value="reset" class="btn-small btn-primary btn-block blue">Reset Filters</button>
           </div>
         </div>
       </div>
