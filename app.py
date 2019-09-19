@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 
 """ Variables """
-db_users = mongo.db.userss
+db_users = mongo.db.users
 db_recipes = mongo.db.recipes
 db_courses = mongo.db.courses
 db_chefs = mongo.db.chefs
@@ -166,7 +166,8 @@ def register():
     if request.method == 'POST':
         users = db_users
         existing_user = users.find_one({'name' : request.form['username']})
-
+       
+       
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
