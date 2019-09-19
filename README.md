@@ -16,36 +16,54 @@ I have decided to create a cookbook web application that allows users to store a
 
 There was a number of suggested features including:
 
-Create the backend code and frontend form(s) to allow users to add new recipes to the site, edit them and delete them.
+- Create the backend code and frontend form(s) to allow users to add new recipes to the site, edit them and delete them.
 
-Create the backend and frontend functionality for users to locate recipes based on the recipe's fields. You may choose to create a full search functionality, or just a directory of recipes.
+- Create the backend and frontend functionality for users to locate recipes based on the recipe's fields. You may choose to create a full search functionality, or just a directory of recipes.
 
-Provide results in a manner that is visually appealing and user friendly.
+- Provide results in a manner that is visually appealing and user friendly.
 
 
 The wireframes for this website can be found in the repository within Github in the directory "assets/images/Wireframes", 
 or you can click [here](https://github.com/darrenmessenger/simon-game/tree/master/assets/images/Wireframes).
 
-The live website can be found [here](https://darrenmessenger.github.io/simon-game/).
+The live website can be found [here](https://python-cookbook-project-dm.herokuapp.com/).
 
 ### User Stories
 
-- If I look at the game when the page loads I will see an information 'banner' telling me to press the 'Start/Reset' button to begin.  
-- I press a coloured panel and I hear a sound that represents the panel and the panel that I pressed vibrates.
-- I press the 'Start/Reset' button and I can hear and see a start up sequence. 
-- After the start up sequence has finished a random panel makes a sound and vibrates. 
-- If I correctly copy the random panel sequence that the game displayed then I will see an information message with a random statement and another random panel will be added to the sequence. 
-- I can see a countdown timer that starts as soon as the random panel or panels are displayed. 
-- If I do not press a panel before the countdown gets to zero then the game is finished and I will hear a buzzer and an information message stating which round I achieved. 
-- If I copy the random sequence correcly each time the counter will increase showing me which round I am on. 
-- I can see at any time which round I am on by looking at the counter. 
-- If I copy the random sequence incorrectly then I will hear a buzzer and an information message stating which round I achieved. 
-- If I hear the buzzer that means the game has ended and I will see a flashing information message telling me to press the 'Start/Reset' button.
-- If I want to restart the game at any time then I can press the 'Start/Reset' button. 
-- If I keep copying the sequence of random panels correctly the sequence will increase by one each round.
-- If I keep copying the sequence of random panels correctly the sequence could get quite long as there isn't an end to the game unless a mistake is made or the game times out.
-- If I beat the highest score then I want the display of the 'Highest Score' to be updated with my current score. 
-- If the Game is showing the next sequence of colours do not let the user press any panel until the sequence has finished. 
+- Home Page:
+- I should see a banner with some famous quotes on top of some changing food images.
+- There should be a Navbar with a Login and Register link.
+- I should see a welcome message and a link to login or register to the the site. 
+- I should see a selection of recipes that myself or other users have uploaded. 
+- I should be able to filter the recipes by Course, Chef, Vegan, Vegetarian or wether the recipe is Gluten Free.
+- I should be able to either enter one filter or any combination of filters. 
+- I should be able to press a button to filter the recipes based on my filters. 
+- I should be able to press a button to reset the filters. 
+- Footer:
+- There should be a footer at the bottom of the page.
+- When the social links in the footer are hovered over they should change colour to red. 
+- When the social links are clicked a new tab should open showing the relevant website. 
+- Navbar:
+- If I am not logged in I should see a 'Log In' and a 'Register' menu option.
+- If I click the Login link it should open the Login page. 
+- If I click the Register link it should open the Register page. 
+- If I click on the Cookbook title in the navbar it should always take me back to the home page.
+- If I am logged in I should see a 'Add Recipe', 'Manage Courses', 'Manage Chefs' and 'LogOut' menu options. 
+- If I click on the 'Add Recipe' menu option it should open the 'Add Recipe' page.
+- If I click on the 'Manage Courses' menu option it should open the 'Manage Courses' page.
+- If I click on the 'Manage Chefs' menu option it should open the 'Manage Chefs' page.
+- If I click on the 'LogOut' menu option it should log me out and take me to the home page.
+- Login Page:
+- When the Login page is loaded it should show a blank Username and Password.
+- I should be able to see a link to 'Sign Up' if I haven't done so already.
+- If I click on the 'Sign Up' link it should open the 'Register' page. 
+- If I enter my Username and Password correctly it should navigate to the home page with a new welcome message that includes my username.
+- If I enter an incorrect username I should see an error message stating that the username is incorrect.
+- If I enter the correct username but incorrect password I should see an error message stating that the password is incorrect.
+- Add Recipe
+
+
+
  
 ### Process
 
