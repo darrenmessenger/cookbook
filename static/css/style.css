@@ -1,5 +1,6 @@
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Bitter|Dancing+Script:400,700");
+/*******************************************MAIN DETAILS*******************************************/
 /* Default font and display settings */
 body {
   font-family: 'Bitter', sans-serif;
@@ -91,5 +92,48 @@ nav .brand-logo {
 
 .btn-margin {
   margin-left: 10px; }
+
+/*******************************************FOOTER DETAILS*******************************************/
+/*Features of the main footer*/
+footer {
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+/*Features of the social links*/
+.footer-social .social-links li a i {
+  width: 40px;
+  height: 40px;
+  padding: 12px 0;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1.6rem;
+  text-align: center;
+  color: white;
+  transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+
+/*Features when hovering over social links*/
+.footer-social .social-links li a i:hover {
+  background: red;
+  color: black; }
+
+li {
+  display: inline; }
+
+/*Features of the copyright statement at bottom of page*/
+.copyright {
+  font-size: 0.8em; }
+
+/*Icon features*/
+.feature .glyphicon {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 45px;
+  line-height: 45px; }
 
 /*# sourceMappingURL=style.css.map */

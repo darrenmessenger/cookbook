@@ -46,8 +46,12 @@ def logout():
 @app.route('/courses')
 def courses():
     """ Manage the Courses page """
-    return render_template("courses.html",
-                            courses=db_courses.find())
+    if 'username' in session:
+        return render_template("courses.html",
+                        courses=db_courses.find(), username=session['username'])
+    else:
+       return render_template("courses.html",
+                            courses=db_courses.find(), username='')
 
 
 @app.route('/chefs')
@@ -62,9 +66,15 @@ def chefs():
 @app.route('/add_recipe')
 def add_recipe():
     """ Add a recipe page """
-    return render_template('add_recipe.html',
+    if 'username' in session:
+        return render_template('add_recipe.html',
                            courses=db_courses.find(),
-                           chefs=db_chefs.find())
+                           chefs=db_chefs.find(), username=session['username'])
+    else:
+       return render_template('add_recipe.html',
+                           courses=db_courses.find(),
+                           chefs=db_chefs.find(), username='')
+                               
 
 @app.route('/add_recipe', methods = ['GET','POST'])
 def insert_recipe():
@@ -145,7 +155,10 @@ def login():
                            recipes=db_recipes.find(),courses=db_courses.find(),chefs=db_chefs.find(),course=None,chef=None)
 
             flash('Incorrect password')  
-    return render_template('login.html')
+    if 'username' in session:
+        return render_template('login.html', username=session['username'])
+    else:
+        return render_template('login.html', username='')
 
                        
 @app.route('/register', methods=['POST', 'GET'])
@@ -160,8 +173,10 @@ def register():
             session['username'] = request.form['username']
             return redirect(url_for('index'))
         flash('That username already exists!')  
-        
-    return render_template('register.html')
+    if 'username' in session:    
+        return render_template('register.html', username=session['username'])
+    else:
+        return render_template('register.html', username='')
     
 @app.route('/search')
 def search():
