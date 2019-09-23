@@ -39,6 +39,34 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 - I should be able to either enter one filter or any combination of filters. 
 - I should be able to press a button to filter the recipes based on my filters. 
 - I should be able to press a button to reset the filters. 
+- I should be able to enter a keyword to search the recipe.
+- If I press enter after entering a keyword in the search box the recipe should be displayed.
+- If I hover over a recipe it should be highlighted. 
+- If I press the red arrow on the recipe it should open a new page with all the details of the recipe.
+- Recipe Display Page:
+- The selected recipe details should be displayed when this page is loaded.
+- If the recipe was entered by me then I should be able to edit or delete the recipe via buttons at the bottom of the recipe. 
+- If the recipe was not entered by me then I should only be able to view the recipe. 
+- If I click on the 'Edit' button then the 'Edit Recipe' page should load so that the recipe can be edited. 
+- If I click on the 'Delete' button then the recipe should be deleted and the home page should be loaded. 
+- Edit Recipe Page:
+- The selected recipe details should be displayed when this page is loaded with editable fields.
+- I should be able to edit any part of the recipe.
+- If I press the 'Update Recipe' button my changes should be saved to the database.
+- If I make changes and I press the 'Reset' button my changes should roll back to what they were before.
+- If I click on the 'Delete' button the recipe should be deleted and the home page should be loaded. 
+- Courses Page:
+- If the 'Manage Courses' menu item is seleted from the navigation bar then then a page should be displayed that allows me to edit, add or delete courses.
+- When the page loads all of the courses should be listed.
+- I should be able to delete a course.
+- I should be able to edit a course. 
+- If I click on 'Edit' then a new page should be loaded with details of the course so that it can be edited.
+- If I click on 'Del' then the course should be deleted and the page refreshed.
+- If I click on 'Add Course' then a new page should be loaded so that I can enter a new course.
+- Add Course Page:
+- When the page is loaded the Course Name should be blank so I can enter a new Course Name.
+- I should be able to enter a new Course Name and press a button so that the course is added to the database.
+- If I add a new course then I should be returned to the list of courses available.
 - Footer:
 - There should be a footer at the bottom of the page.
 - When the social links in the footer are hovered over they should change colour to red. 
