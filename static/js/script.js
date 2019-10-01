@@ -5,8 +5,7 @@ $(document).ready(function() {
     $('.dropdown-trigger').dropdown();
     $('.slider').slider();
     $('select').formSelect();
-    $('select').material_select();
-    
+
 
     // for HTML5 "required" attribute
     $("select[required]").css({

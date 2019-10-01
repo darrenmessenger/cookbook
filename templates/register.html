@@ -22,6 +22,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input type="password" class="form-control validate right-alert" required="" aria-required="true" name="pass2" placeholder="Re-Enter Password">
+                            <label for="password" data-error="Please re-enter the password.">Re-Enter Password</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <button type="submit" class="btn btn-primary btn-block orange">Register</button> {% with messages = get_flashed_messages() %} {% if messages %}

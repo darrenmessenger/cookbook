@@ -166,18 +166,20 @@ def register():
     if request.method == 'POST':
         users = db_users
         existing_user = users.find_one({'name' : request.form['username']})
+        password1 = request.form.get('pass')
+        password2 = request.form.get('pass2')
        
-       
-        if existing_user is None:
+        if password1 != password2:
+            flash('The passwords do not match')  
+        elif existing_user is not None:
+            flash('That username already exists!')  
+        elif existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
             return redirect(url_for('index'))
-        flash('That username already exists!')  
-    if 'username' in session:    
-        return render_template('register.html', username=session['username'])
-    else:
-        return render_template('register.html', username='')
+        
+    return render_template('register.html', username='')
     
 @app.route('/search')
 def search():
