@@ -49,13 +49,20 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 - If the recipe was not entered by me then I should only be able to view the recipe. 
 - If I click on the 'Edit' button then the 'Edit Recipe' page should load so that the recipe can be edited. 
 - If I click on the 'Delete' button then the recipe should be deleted and the home page should be loaded. 
+- Add Recipe Page:
+- When the page is loaded I should see the descriptions of each section that can be entered. 
+- I should be able to enter the details of the recipe.
+- If there is a drop down box I should be able to select the correct item.
+- I should be able to enter the URL of the image of the recipe.
+- If I enter the wrong image URL or leave it blank a default image should be displayed on the main page.
+- After I have entered the details of the recipe I should be able to press a button to add the recipe and be returned to the main page. 
 - Edit Recipe Page:
 - The selected recipe details should be displayed when this page is loaded with editable fields.
 - I should be able to edit any part of the recipe.
 - If I press the 'Update Recipe' button my changes should be saved to the database.
 - If I make changes and I press the 'Reset' button my changes should roll back to what they were before.
 - If I click on the 'Delete' button the recipe should be deleted and the home page should be loaded. 
-- Courses Page:
+- Manage Courses Page:
 - If the 'Manage Courses' menu item is seleted from the navigation bar then then a page should be displayed that allows me to edit, add or delete courses.
 - When the page loads all of the courses should be listed.
 - I should be able to delete a course.
@@ -67,6 +74,26 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 - When the page is loaded the Course Name should be blank so I can enter a new Course Name.
 - I should be able to enter a new Course Name and press a button so that the course is added to the database.
 - If I add a new course then I should be returned to the list of courses available.
+- Edit Course Page:
+- When the page is loaded the Course Name should be displayed and it should be editable.
+- If I edit a course then I should be able to press a button to save my changes and be returned to the list of courses available.
+- I should be able to cancel my changes and be returned to the list of courses available.
+- Manage Chefs Page:
+- If the 'Manage Chefs' menu item is seleted from the navigation bar then then a page should be displayed that allows me to edit, add or delete chefs.
+- When the page loads all of the Chefs should be listed.
+- I should be able to delete a chef.
+- I should be able to edit a chef. 
+- If I click on 'Edit' then a new page should be loaded with details of the chef so that it can be edited.
+- If I click on 'Del' then the chef should be deleted and the page refreshed.
+- If I click on 'Add Chef' then a new page should be loaded so that I can enter a new chef.
+- Add Chef Page:
+- When the page is loaded the Chef Name should be blank so I can enter a new Chef Name.
+- I should be able to enter a new Chef Name and press a button so that the chef is added to the database.
+- If I add a new chef then I should be returned to the list of chefs available.
+- Edit Chefs Page:
+- When the page is loaded the Chefs Name should be displayed and it should be editable.
+- If I edit a chef then I should be able to press a button to save my changes and be returned to the list of chefs available.
+- I should be able to cancel my changes and be returned to the list of chefs available.
 - Footer:
 - There should be a footer at the bottom of the page.
 - When the social links in the footer are hovered over they should change colour to red. 
@@ -88,7 +115,7 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 - If I enter my Username and Password correctly it should navigate to the home page with a new welcome message that includes my username.
 - If I enter an incorrect username I should see an error message stating that the username is incorrect.
 - If I enter the correct username but incorrect password I should see an error message stating that the password is incorrect.
-- Add Recipe
+
 
 
 
@@ -98,58 +125,55 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 I went through the user stories and wireframes before embarking on the actual coding of the project to ensure I had a good idea of how to approach things. 
 
 ## Features
+Throughout the project I have use MaterializeCSS as it is a modern, responsive front-end framework. It has ensured that every page of the project is consistent in its design and layout.
 
 #### Main Page
-On the main page there is a background image of some random numbers. The background image seemed to suit the Simon game. 
-The two main sections have this background but I have put an opaque overlay over the background image, one in blue and the other in yellow. 
-I chose these colours as they suited the colours of the actual Simon game (red, blue, green, yellow).
+On the main page there is a slide showing different images with some 'foody' quotes that rotate. Once the user has logged in then there will be a welcome 
+message showing their username. If the user scrolls down they will see all of the recipes displayed with a brief description. If they want to see
+more details then they can press the button on the card and a new page will be displayed showing all of the details of the recipe. They can also
+filter the recipes using either the course, chef, vegetarian, vegan or gluten free.
+
+#### Display Recipe:
+This page shows the details and the image of the recipe. The user will only see the Edit or Delete button if it was their username 
+that entered the recipe in the first place.
+
+#### Add Recipe:
+This page is used to add a recipe. Details can be entered along with a URL image of the recipe. There is a button at the botton so that the recipe
+can be added. 
+
+#### Edit Recipe:
+This page is used to edit a recipe. When the page is loaded the current details are loaded and any of these can be edited. There is a button at the botton so that the recipe
+can be updated. There is also a reset button that can be pressed so that any changes that the user has entered are reversed.
+
+#### Manage Courses:
+This page is used to edit or delete the courses that are stored on the database. Any user can update or delete an existing course.
+
+#### Manage Chefs:
+This page is used to edit or delete the chefs that are stored on the database. The user will only see the Edit or Delete button if it was their username 
+that entered the chef in the first place. You can also press a button to add a new chef.
 
 #### Navigation:
-There is a static header at the top of the page which includes some menu items to take you to different parts of the page. 
-I have incorporated some jquery code that I found on stackoverflow that allows the page to scroll smoothly when a navigation link is clicked. 
-On small screens the navigation menu disappears and a bootstrap burger button appears so that the menu can be toggled on or off. 
-
-#### About:
-There is an about section that utilises the bootstrap grid layout. The description of the Simon game is a summary taken from Wikipedia. 
-There is also a 'Read more...' with a link to Wikipedia if the user wants to read more about the game. 
-
-#### Simon Game:
-This section utilises the bootstrap grid layout. 
-
-The game itself uses has different colour panels withing a large circle to imitate the game. There is a counter and a 'Start/Reset' button within the circle as well. 
-
-When a user clicks on a button or a panel the relevant function is called from the script.js file. There are a number of functions that deal with every aspect of the game. 
-
-The game utilises Animate.css which creates CSS animations. I used it to create a 'vibrating' effect when each button is clicked. 
-
-Each of the User Stories were looked at to make sure that the game functioned correctly. The design and functionality of the game was based on the User Stories. 
-
-#### Contact Me:
-This section utilises the bootstrap grid layout. There is a form to allow the user to enter details so that they may contact me if they like the game and want to give me a project or want to discuss something.
-All the details are very clear using descriptive placeholders. 
-I have used [EmailJS](http://www.emailjs.com/) so that when the user presses 'submit' I will receive an email and see the details of what the user has typed in. 
-Once the email has been sent successfully the user will see a message box and the input fields will be blanked out. 
-
-I have also used [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) to show a map of my location. If the user clicks on the Marker then the map will zoom in. 
+There is a  header at the top of the page which includes some menu items to take you to different parts of the website. 
+On small screens the navigation menu disappears and a burger icon button appears so that the menu can be toggled on or off. 
+When each menu item is hovered over there is a transition to a different colour so that the user can see which menu item is being hovered over. 
 
 #### Footer:
-At the bottom of the page there are links to various social media including Twitter, LinkedIN, GitHub, YouTube and Instagram. 
+At the bottom of the page there are links to various social media including Twitter, LinkedIN, GitHub and Instagram. 
 When the links are clicked then a new page is opened up showing the social media page. 
 
 ## Technologies Used
 
 The following technologies have all been used during the coding of this project:
 
-- [Bootstrap](https://getbootstrap.com/) I used bootstrap 3.3.7 to organise the grid layout of the site. 
+- [Materializecss](https://materializecss.com/) The whole project is built using materializecss as it is responsive and enables fast development. 
 - [JQuery](https://jquery.com/). This was used for the gaming functionality. 
-- [SASS](https://sass-lang.com/guide) I have used SCSS files with Preprocessing, Partials, Variables, Imports, Mixins, Extend, and Operators. 
-- [EmailJS](http://www.emailjs.com/) When the contact form is submitted I utilised emailJS to send me an actual email to my email address. 
-- [Google Fonts](https://fonts.google.com/) I chose the 'Nunito' font as it suited my project. 
+- [SASS](https://sass-lang.com/guide) I have used SCSS files. 
+- [Google Fonts](https://fonts.google.com/) Google fonts are used in the project. 
 - [FontAwesome](https://fontawesome.com/) I used FontAwesome for the icons shown in the footer for the social links. 
-- [Animate.css](https://daneden.github.io/animate.css/) This was useful to imitate a 'vibrating' panel on the game. 
-- [Google Maps API](https://developers.google.com/maps/documentation/javascript/tutorial) This showed where I am based. 
-- [GitHub](https://github.com/darrenmessenger/simon-game) I used GitHub for version control and to publish the site using GitHub Pages. 
+- [GitHub](https://github.com/darrenmessenger/cookbook) I used GitHub for version control. 
+- [Heroku](https://python-cookbook-project-dm.herokuapp.com) I used Heroku to publish the site. 
 
+ 
 ## Testing
 
 The HTML and CSS code used on this project has been tested using The [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) 
@@ -160,76 +184,112 @@ The project has been tested on Google Chrome (desktop and mobile versions), Mozi
 Every other aspect of the site has been tested as described below.
 
 ### Responsive Testing
-I utilised Bootstrap so that the whole site would be responsive on different platforms. 
+I utilised MaterializeCSS so that the whole site would be responsive on different platforms. 
 
-On a large screen the full navigation menu is displayed and the game appears next to the about section. The map of my location appears next to the contact form. 
+On a large and medium screen the full navigation menu is displayed. The recipes will appear as two per row.
 
-On a medium screen the full navigation menu is displayed but the game appears underneath the about section. The map also appears underneath the contact form. 
+On a small screen the menu items disappear and a burger button appears which, when clicked, displays the menu items.
+The recipes will appear as one per row.
 
-On a small screen the menu items disappear and a bootstrap burger button appears which, when clicked, displays the menu items on their own row. If clicked again the menu will disappear again.  
-The game is displayed beneath the about section and the map appears beneath the contact form as it did on a medium screen. 
-
-### Header and Navigation
-
-On the top of the page there is a navigation bar with 4 menu items. Each menu item has been tested on each page to ensure it takes the user to the correct area of the page. 
-The page scrolled smoothly when a navigation link is clicked as it should. 
-When each menu item is hovered over there is a transition to a different colour so that the user can see which menu item is being hovered over. 
-
-### About
-
-The 'Read more...' link was checked to make sure a new page was opened with the Wikipedia page. The about section appeared in the correct place on the page when tested responsively. 
-
-### Simon Game
-
-The game appeared in the correct place on the page when tested responsively. 
-
-The game has been tested extensively by both me and my family!.
+### General Testing
 
 I went through each of the User Stories to make sure that they worked as expected. 
 
 | User Story | Result |
 | ---------- | ------ |
-| If I look at the game when the page loads I will see an information 'banner' telling me to press the 'Start/Reset' button to begin. | **PASSED** |
-| I press a coloured panel and I hear a sound that represents the panel and the panel that I pressed vibrates. | **PASSED** |
-| I press the 'Start/Reset' button and I can hear and see a start up sequence. | **PASSED** |
-| After the start up sequence has finished a random panel makes a sound and vibrates. | **PASSED** |
-| If I correctly copy the random panel sequence that the game displayed then I will see an information message with a random statement and another random panel will be added to the sequence. | **PASSED** |
-| I can see a countdown timer that starts as soon as the random panel or panels are displayed. | **PASSED** |
-| If I do not press a panel before the countdown gets to zero then the game is finished and I will hear a buzzer and an information message stating which round I achieved. | **PASSED** |
-| If I copy the random sequence correcly each time the counter will increase showing me which round I am on. | **PASSED** |
-| I can see at any time which round I am on by looking at the counter. | **PASSED** |
-| If I copy the random sequence incorrectly then I will hear a buzzer and an information message stating which round I achieved. | **PASSED** |
-| If I hear the buzzer that means the game has ended and I will see a flashing information message telling me to press the 'Start/Reset' button. | **PASSED** |
-| If I want to restart the game at any time then I can press the 'Start/Reset' button. | **PASSED** |
-| If I keep copying the sequence of random panels correctly the sequence will increase by one each round. | **PASSED** |
-| If I keep copying the sequence of random panels correctly the sequence could get quite long as there isn't an end to the game unless a mistake is made or the game times out. | **PASSED** |
-| If I beat the highest score then I want the display of the 'Highest Score' to be updated with my current score. | **PASSED**|
-| If the Game is showing the next sequence of colours do not let the user press any panel until the sequence has finished. | **PASSED** |
+| Home Page: |  |
+| There should be a Navbar with a Login and Register link.| **PASSED** |
+| I should see a welcome message and a link to login or register to the the site. | **PASSED** |
+| I should see a selection of recipes that myself or other users have uploaded. | **PASSED** |
+| I should be able to filter the recipes by Course, Chef, Vegan, Vegetarian or wether the recipe is Gluten Free.| **PASSED** |
+| I should be able to either enter one filter or any combination of filters. | **PASSED** |
+| I should be able to press a button to filter the recipes based on my filters. | **PASSED** |
+| I should be able to press a button to reset the filters. | **PASSED** |
+| I should be able to enter a keyword to search the recipe.| **PASSED** |
+| If I press enter after entering a keyword in the search box the recipe should be displayed.| **PASSED** |
+| If I hover over a recipe it should be highlighted. | **PASSED** |
+| If I press the red arrow on the recipe it should open a new page with all the details of the recipe.| **PASSED** |
+| Recipe Display Page:|  |
+| The selected recipe details should be displayed when this page is loaded.| **PASSED** |
+| If the recipe was entered by me then I should be able to edit or delete the recipe via buttons at the bottom of the recipe. | **PASSED** |
+| If the recipe was not entered by me then I should only be able to view the recipe. | **PASSED** |
+| If I click on the 'Edit' button then the 'Edit Recipe' page should load so that the recipe can be edited. | **PASSED** |
+| If I click on the 'Delete' button then the recipe should be deleted and the home page should be loaded. | **PASSED** |
+| Add Recipe Page:|  |
+| When the page is loaded I should see the descriptions of each section that can be entered. | **PASSED** |
+| I should be able to enter the details of the recipe.| **PASSED** |
+| If there is a drop down box I should be able to select the correct item.| **PASSED** |
+| I should be able to enter the URL of the image of the recipe.| **PASSED** |
+| If I enter the wrong image URL or leave it blank a default image should be displayed on the main page.| **PASSED** |
+| After I have entered the details of the recipe I should be able to press a button to add the recipe and be returned to the main page. | **PASSED** |
+| Edit Recipe Page:|  |
+| The selected recipe details should be displayed when this page is loaded with editable fields.| **PASSED** |
+| I should be able to edit any part of the recipe.| **PASSED** |
+| If I press the 'Update Recipe' button my changes should be saved to the database.| **PASSED** |
+| If I make changes and I press the 'Reset' button my changes should roll back to what they were before.| **PASSED** |
+| If I click on the 'Delete' button the recipe should be deleted and the home page should be loaded.| **PASSED** | 
+| Manage Courses Page:|  |
+| If the 'Manage Courses' menu item is seleted from the navigation bar then then a page should be displayed that allows me to edit, add or delete courses.| **PASSED** |
+| When the page loads all of the courses should be listed.| **PASSED** |
+| I should be able to delete a course.| **PASSED** |
+| I should be able to edit a course.| **PASSED** | 
+| If I click on 'Edit' then a new page should be loaded with details of the course so that it can be edited.| **PASSED** |
+| If I click on 'Del' then the course should be deleted and the page refreshed.| **PASSED** |
+| If I click on 'Add Course' then a new page should be loaded so that I can enter a new course.| **PASSED** |
+| Add Course Page:|  |
+| When the page is loaded the Course Name should be blank so I can enter a new Course Name.| **PASSED** |
+| I should be able to enter a new Course Name and press a button so that the course is added to the database.| **PASSED** |
+| If I add a new course then I should be returned to the list of courses available.| **PASSED** |
+| Edit Course Page:|  |
+| When the page is loaded the Course Name should be displayed and it should be editable.| **PASSED** |
+| If I edit a course then I should be able to press a button to save my changes and be returned to the list of courses available.| **PASSED** |
+| I should be able to cancel my changes and be returned to the list of courses available.| **PASSED** |
+| Manage Chefs Page:|  |
+| If the 'Manage Chefs' menu item is seleted from the navigation bar then then a page should be displayed that allows me to edit, add or delete chefs.| **PASSED** |
+| When the page loads all of the Chefs should be listed.| **PASSED** |
+| I should be able to delete a chef.| **PASSED** |
+| I should be able to edit a chef. | **PASSED** |
+| If I click on 'Edit' then a new page should be loaded with details of the chef so that it can be edited.| **PASSED** |
+| If I click on 'Del' then the chef should be deleted and the page refreshed.| **PASSED** |
+| If I click on 'Add Chef' then a new page should be loaded so that I can enter a new chef.| **PASSED** |
+| Add Chef Page:|  |
+| When the page is loaded the Chef Name should be blank so I can enter a new Chef Name.| **PASSED** |
+| I should be able to enter a new Chef Name and press a button so that the chef is added to the database.| **PASSED** |
+| If I add a new chef then I should be returned to the list of chefs available.| **PASSED** |
+| Edit Chefs Page:|  |
+| When the page is loaded the Chefs Name should be displayed and it should be editable.| **PASSED** |
+| If I edit a chef then I should be able to press a button to save my changes and be returned to the list of chefs available.| **PASSED** |
+| I should be able to cancel my changes and be returned to the list of chefs available.| **PASSED** |
+| Footer:|  |
+| There should be a footer at the bottom of the page.| **PASSED** |
+| When the social links in the footer are hovered over they should change colour to red. | **PASSED** |
+| When the social links are clicked a new tab should open showing the relevant website.| **PASSED** | 
+| Navbar:|  |
+| If I am not logged in I should see a 'Log In' and a 'Register' menu option.| **PASSED** |
+| If I click the Login link it should open the Login page.| **PASSED** | 
+| If I click the Register link it should open the Register page.| **PASSED** | 
+| If I click on the Cookbook title in the navbar it should always take me back to the home page.| **PASSED** |
+| If I am logged in I should see a 'Add Recipe', 'Manage Courses', 'Manage Chefs' and 'LogOut' menu options.| **PASSED** | 
+| If I click on the 'Add Recipe' menu option it should open the 'Add Recipe' page.| **PASSED** |
+| If I click on the 'Manage Courses' menu option it should open the 'Manage Courses' page.| **PASSED** |
+| If I click on the 'Manage Chefs' menu option it should open the 'Manage Chefs' page.| **PASSED** |
+| If I click on the 'LogOut' menu option it should log me out and take me to the home page.| **PASSED** |
+| Login Page:|  |
+| When the Login page is loaded it should show a blank Username and Password.| **PASSED** |
+| I should be able to see a link to 'Sign Up' if I haven't done so already.| **PASSED** |
+| If I click on the 'Sign Up' link it should open the 'Register' page.| **PASSED** | 
+| If I enter my Username and Password correctly it should navigate to the home page with a new welcome message that includes my username.| **PASSED** |
+| If I enter an incorrect username I should see an error message stating that the username is incorrect.| **PASSED** |
+| If I enter the correct username but incorrect password I should see an error message stating that the password is incorrect.| **PASSED** |
 
-### Contact Me
-
-The contact section and the map appeared in the correct place on the page when tested responsively. 
-
-There are 3 fields that need to be entered by the user. Each field was tested to make sure the user entered data in that field. 
-If the user didn't enter data in each field then the submit button won't submit the data because an error message appears. 
-When all the fields have been entered and the Send Request button is pressed I made sure an email is received in my inbox. 
-There was also a message box that appeared when emailJS sent the email successfully. If it wasn't sent successfully then an error message would be displayed. 
-
-The map appeared as it should and the marker pinpointed my location. When the marker was clicked it zoomed into my location so that it showed a little more detail. 
-
-### Footer
-
-There are links to social pages within the footer. Each link was clicked to make sure it loads up a new page with the correct social page. 
 
 ### Jasmine Testing 
-
-I did look into Jasmine testing but realised it is mainly useful when a function or the DOM returns a value. 
 
 This project did not give me the opportunity to use Jasmine testing as the functions simply ran without returning a value or called another function. 
 
 ## Deployment 
 
-This project was deployed through GitHub Pages. The process was simple and involved going to my repository for this project and clicking on the settings icon. 
+This project was deployed through Heroku. The process was simple and involved going to my repository for this project and clicking on the settings icon. 
 
 I scrolled down to the GitHub Pages section and picked 'Master Branch' as the source, and saved it. The URL of the published site was then displayed in that same section. 
 
@@ -253,9 +313,9 @@ I would like to thank all of the Code Institute students that helped throughout 
 
 ### Content
 
-- The text from the about section was received from [Wikipedia](https://en.wikipedia.org/wiki/Simon_(game)).
+- The recipes were found from the BBC food website and Jamie Olivers.
 
 ## Media
 
-- The background image was downloaded from [ShutterStock](https://www.shutterstock.com/).
-- The audio sounds (beeps and failure sounds) were found on [Sound Jay](https://www.soundjay.com/).
+- The background images was downloaded from [ShutterStock](https://www.shutterstock.com/).
+
