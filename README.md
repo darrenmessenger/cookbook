@@ -23,11 +23,49 @@ There was a number of suggested features including:
 - Provide results in a manner that is visually appealing and user friendly.
 
 
-The wireframes for this website can be found in the repository within Github in the directory "assets/images/Wireframes", 
-or you can click [here](https://github.com/darrenmessenger/simon-game/tree/master/assets/images/Wireframes).
+The wireframes for this website can be found in the repository within Github in the directory "static/images/Wireframes", 
+or you can click [here](https://github.com/darrenmessenger/cookbook/tree/master/static).
 
 The live website can be found [here](https://python-cookbook-project-dm.herokuapp.com/).
 
+### Database Schema
+[Mongodb](https://cloud.mongodb.com/v2/5c64623aa6f239113e199d4c#metrics/replicaSet/5c6484dfa6f239229159aacd/explorer/cookbook) was used to create the database for the project.
+The final database ERD can be found in the folder [here](https://github.com/darrenmessenger/cookbook/tree/master/static).
+The final database consists of 5 collections, categories, chefs, courses, recipes and users. Details are shown below: 
+
+#### categories
+- _id (ID of the category)
+- category_name (Name of the category)
+
+#### chefs
+- _id (ID of chefs)
+- chef_entered_by (The user that originally entered the chef)
+- chef_name (Name of the chef)
+
+#### courses
+- _id (ID of courses)
+- course_name (The name of the starter)
+
+#### recipes
+- _id (ID of the recipe)
+- recipe_name (The name of the recipe)
+- recipe_description (The description of the recipe)
+- recipe_ingredients (The recipe ingredients)
+- recipe_method (The steps involved with how the recipe is made)
+- recipe_course (Which course this recipe belongs to)
+- recipe_chef (Which chef originally made up this recipe)
+- recipe_image_url (The URL of the image so that an image can be seen)
+- recipe_is_vegetarian (Is the recipe vegetarian)
+- recipe_is_vegan (Is the recipe vegan )
+- recipe_is_glutenfree (Is the recipe gluten free)
+- recipe_entered_by (Which user entered the recipe)
+
+#### users
+- _id (ID of courses)
+- name (The name of the registered user)
+- password (The password that the user entered when they registered)
+
+ 
 ### User Stories
 
 - Home Page:
