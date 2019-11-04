@@ -32,7 +32,7 @@ The live website can be found [here](https://python-cookbook-project-dm.herokuap
 
 ### Database Schema
 [Mongodb](https://cloud.mongodb.com/v2/5c64623aa6f239113e199d4c#metrics/replicaSet/5c6484dfa6f239229159aacd/explorer/cookbook) was used to create the database for the project.
-The final database ERD can be found in the folder [here](https://github.com/darrenmessenger/cookbook/tree/master/static).
+The final database ERD can be found in the folder [here](https://github.com/darrenmessenger/cookbook/tree/master/static/images/ERD).
 The final database consists of 5 collections, categories, chefs, courses, recipes and users. Details are shown below: 
 
 #### categories
