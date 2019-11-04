@@ -8,11 +8,13 @@ This project has been built for the Practical Python and Data-Centric Developmen
 The brief was to build a full-stack site that allows users to manage a common dataset about a particular domain.
 
 Users make use of the site to share their own data with the community, and benefit from having convenient access to the data provided by all other members.
-The site owner advances their own goals by providing this functionality, potentially by being a regular user themselves. The site owner might also benefit from the collection of the dataset as a whole.
+The site owner advances their own goals by providing this functionality, potentially by being a regular user themselves. The site owner might also benefit 
+from the collection of the dataset as a whole.
 
 The main technologies that are to be used for this project are HTML, CSS, JavaScript, Python+Flask, MongoDB.
 
-I have decided to create a cookbook web application that allows users to store and easily access cooking recipes. Recipes would include fields such as ingredients, preparation steps, required tools, cuisine, etc.
+I have decided to create a cookbook web application that allows users to store and easily access cooking recipes. Recipes would include fields such as 
+ingredients, preparation steps, required tools, cuisine, etc.
 
 There was a number of suggested features including:
 
@@ -163,7 +165,8 @@ The final database consists of 5 collections, categories, chefs, courses, recipe
 I went through the user stories and wireframes before embarking on the actual coding of the project to ensure I had a good idea of how to approach things. 
 
 ## Features
-Throughout the project I have use MaterializeCSS as it is a modern, responsive front-end framework. It has ensured that every page of the project is consistent in its design and layout.
+Throughout the project I have use MaterializeCSS as it is a modern, responsive front-end framework. It has ensured that every page of the project is 
+consistent in its design and layout.
 
 #### Main Page
 On the main page there is a slide showing different images with some 'foody' quotes that rotate. Once the user has logged in then there will be a welcome 
@@ -210,6 +213,7 @@ The following technologies have all been used during the coding of this project:
 - [FontAwesome](https://fontawesome.com/) I used FontAwesome for the icons shown in the footer for the social links. 
 - [GitHub](https://github.com/darrenmessenger/cookbook) I used GitHub for version control. 
 - [Heroku](https://python-cookbook-project-dm.herokuapp.com) I used Heroku to publish the site. 
+- [Mongodb](https://cloud.mongodb.com/v2/5c64623aa6f239113e199d4c#metrics/replicaSet/5c6484dfa6f239229159aacd/explorer/cookbook) Mongodb was used to create the database for the project.
 
  
 ## Testing
@@ -327,23 +331,141 @@ This project did not give me the opportunity to use Jasmine testing as the funct
 
 ## Deployment 
 
-This project was deployed through Heroku. The process was simple and involved going to my repository for this project and clicking on the settings icon. 
+This project was deployed through Heroku. 
 
-I scrolled down to the GitHub Pages section and picked 'Master Branch' as the source, and saved it. The URL of the published site was then displayed in that same section. 
+Following steps were taken to deploy the website:
+In Cloud9 open up a command line and type ‘heroku’. That will show that heroku is already installed. 
 
-Anyone can download the project or clone it from GitHub [here](https://github.com/darrenmessenger/simon-game) 
+Type ‘heroku login -i’ to login to your heroku account. Type ‘heroku apps’ to show the apps in your account. 
 
-The live website can be found [here](https://darrenmessenger.github.io/simon-game/).
+To create an app on Heroku you can either do it directly on Heroku or run the following command:
+```
+heroku apps:create python-cookbook-project-dm
+```
+
+Copy the heroku git URL from the setting page of heroku and enter the following command on Cloud9:
+```
+git remote add heroku https://git.heroku.com/thorin-and-company-dm.git
+```
+
+Then run the following command to see the remote git attached to your project:
+```
+git remote -v
+```
+
+If you haven’t added the files to Heroku yet then you will have to run the following command:
+```
+git add .
+```
+And then commit the changes:
+```
+git commit -m “Deployment to Heroku”
+```
+Type the following command to push the project to heroku:
+```
+git push -u heroku master
+```
+
+To create a requirements.txt file run the following command:
+```
+sudo pip3 freeze --local > requirements.txt
+```
+Then:
+```
+git add requirements.txt
+```
+```
+git commit -m "Add requirements file"
+```
+```
+git push -u heroku master
+```
+We then need to create a Procfile with the following commands:
+```
+echo web: python run.py > Procfile
+```
+```
+git add Procfile
+```
+```
+git commit -m "Add Procfile"
+```
+```
+git push -u heroku master
+```
+In heroku app, inside the settings, clicked Config Vars, and set IP, PORT and environment variable MONGO_URI.
+Clicked 'Open app' and the website was up and running.
+
+
+
+Anyone can download the project or clone it from GitHub [here](https://github.com/darrenmessenger/cookbook) 
+
+The live website can be found [here](http://python-cookbook-project-dm.herokuapp.com/).
 
 ### Cloning
 
-If you wish to clone this project then you can click on the green 'Clone or download' button on [this](https://github.com/darrenmessenger/simon-game) page, and then download the .zip file. 
+If you wish to clone this project then you can click on the green 'Clone or download' button on [this](https://github.com/darrenmessenger/cookbook) page, and then download the .zip file. 
 
 Unzip the file into the directory you prefer on your computer or cloud drive and then import it into your favourite IDE. 
 
-You will need to install Bcrypt:
-sudo pip3 install bcrypt
+Clone the repository
+```
+git clone https://github.com/darrenmessenger/cookbook.git
+```
 
+Move into the folder
+```
+cd directoty-name
+```
+
+You will need to install the dependencies found in the requirements.txt file:
+```
+pip3 freeze --local > requirements.txt
+```
+ 
+Then run:
+```
+sudo pip3 install flask-pymongo 
+```
+```
+sudo pip3 install dnspython
+```
+
+To run the project locally use:
+```
+python3 app.py runserver
+```
+
+### Keeping MongoDB Password Private
+
+Go to the MongoDB Atlas DB and click on ‘Connect’. Select ‘Connect Your Application’ and then click on the ‘Short SRV Connection String’ and copy the text. 
+
+Go to cloud9 and enter in a command terminal:
+```
+Cd ..
+nano .bashrc
+```
+
+Near the top of the opened file enter:
+```
+export MONGO_URI="mongodb+srv://root:r00tUser@cluster0-nogor.mongodb.net/cookbook?retryWrites=true&w=majority"
+```    
+Where the address in quotes is what you have just copied. Remember to change the database name and the password. Press CTRL X to exit, Y to save then Enter for the filename.
+
+Close the Terminal and reopen it so that the changes take effect.
+
+Type the following in a terminal to show the connection string:
+```
+echo $MONGO_URI
+```
+Edit app.py with the following so that you can connect to MongoDB:
+```
+app = Flask(__name__)
+app.config["MONGO_DBNAME"] = 'cookbook'
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+
+mongo = PyMongo(app)
+```
 
 ## Credits
 
