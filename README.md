@@ -26,7 +26,7 @@ There was a number of suggested features including:
 
 
 The wireframes for this website can be found in the repository within Github in the directory "static/images/Wireframes", 
-or you can click [here](https://github.com/darrenmessenger/cookbook/tree/master/static).
+or you can click [here](https://github.com/darrenmessenger/cookbook/tree/master/static/images/Wireframes).
 
 The live website can be found [here](https://python-cookbook-project-dm.herokuapp.com/).
 
