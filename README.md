@@ -341,6 +341,10 @@ This project did not give me the opportunity to use Jasmine testing as the funct
 This project was deployed through Heroku. 
 
 Following steps were taken to deploy the website:
+
+In app.py I changed debug=True to debug=False as debug=True is used for debugging during development. 
+debug=False is is for deployment to a production server.
+
 In Cloud9 open up a command line and type ‘heroku’. That will show that heroku is already installed. 
 
 Type ‘heroku login -i’ to login to your heroku account. Type ‘heroku apps’ to show the apps in your account. 
