@@ -149,6 +149,11 @@ The final database consists of 5 collections, categories, chefs, courses, recipe
 - If I click on the 'Manage Chefs' menu option it should open the 'Manage Chefs' page.
 - If I click on the 'LogOut' menu option it should log me out and take me to the home page.
 - Login Page:
+- If I do not log in then I should be able to browse recipes as a guest. 
+- If I do not log in then I should not be able to delete or edit any recipes. 
+- If I do not log in then I shouldn't be able to add any recipes, chefs or courses. 
+- If I do log in then I should be able to edit or delete any courses, chefs or recipes that I have entered. 
+- If I  log in then I shouldn't be able to edit or delete any recipes that someone else has entered. 
 - When the Login page is loaded it should show a blank Username and Password.
 - I should be able to see a link to 'Sign Up' if I haven't done so already.
 - If I click on the 'Sign Up' link it should open the 'Register' page. 
@@ -157,16 +162,13 @@ The final database consists of 5 collections, categories, chefs, courses, recipe
 - If I enter the correct username but incorrect password I should see an error message stating that the password is incorrect.
 
 
-
-
- 
 ### Process
 
 I went through the user stories and wireframes before embarking on the actual coding of the project to ensure I had a good idea of how to approach things. 
 
 ## Features
 Throughout the project I have use MaterializeCSS as it is a modern, responsive front-end framework. It has ensured that every page of the project is 
-consistent in its design and layout.
+consistent in its design and layout. Next to the title on the browser tab I have added a favicon of a knife and fork. 
 
 #### Main Page
 On the main page there is a slide showing different images with some 'foody' quotes that rotate. Once the user has logged in then there will be a welcome 
@@ -317,6 +319,11 @@ I went through each of the User Stories to make sure that they worked as expecte
 | If I click on the 'Manage Chefs' menu option it should open the 'Manage Chefs' page.| **PASSED** |
 | If I click on the 'LogOut' menu option it should log me out and take me to the home page.| **PASSED** |
 | Login Page:|  |
+| If I do not log in then I should be able to browse recipes as a guest. | **PASSED** |
+| If I do not log in then I should not be able to delete or edit any recipes. | **PASSED** |
+| If I do not log in then I shouldn't be able to add any recipes, chefs or courses. | **PASSED** |
+| If I do log in then I should be able to edit or delete any courses, chefs or recipes that I have entered. | **PASSED** |
+| If I  log in then I shouldn't be able to edit or delete any recipes that someone else has entered. | **PASSED** |
 | When the Login page is loaded it should show a blank Username and Password.| **PASSED** |
 | I should be able to see a link to 'Sign Up' if I haven't done so already.| **PASSED** |
 | If I click on the 'Sign Up' link it should open the 'Register' page.| **PASSED** | 
